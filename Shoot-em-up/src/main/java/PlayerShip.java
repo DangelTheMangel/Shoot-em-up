@@ -4,22 +4,14 @@ import processing.core.PVector;
 import static processing.core.PConstants.*;
 import static processing.core.PConstants.LEFT;
 
-public class PlayerShip {
+public class PlayerShip extends AirShip{
 
-
-    PVector position = new PVector();
-    PVector velocity = new PVector();
-
-
-    PApplet p;
-    int playerWidth = 10;
-    int playerHeight=10;
     boolean down,up,left,right = false;
     boolean ready = true;
+    boolean actionPressed = false;
 
-    PlayerShip(PApplet p){
-        this.p = p;
-        position.set(100,this.p.height/2);
+    PlayerShip(PApplet p, PVector position, int playerWidth, int playerWidth2) {
+        super(p, position, playerWidth, playerWidth2);
 
     }
 
@@ -27,28 +19,30 @@ public class PlayerShip {
     void changePosition(){
 
         position.add(velocity);
-        p.println(p.width);
         position.x =p.constrain(position.x,0,p.width-playerWidth);
         position.y=  p.constrain(position.y,0,p.height-playerHeight);
     }
 
 
-    void draw(){
+    void display(){
         changePosition();
         p.rect(position.x,position.y,playerWidth,playerHeight);
         changePosition();
 
+
     }
 
+    @Override
+    void move() {
 
+    }
 
+    void shoot(){
+        if(actionPressed){
+            System.out.println("bang bang dø");
+        }
 
-
-
-
-
-
-
+    }
 
     void controls(char key, int keyCode,  boolean pressed){
         velocity.set(0,0);
@@ -56,12 +50,14 @@ public class PlayerShip {
             switch(key){
 
                 case 'f':{
-                    if(ready) {
-                        ready = false;
+                    if((pressed) && (ready)) {
+                        actionPressed = true;
 
 
+                    }else{
+                        actionPressed = false;
                     }
-                }
+                }break;
 
                 case 's': {
                     if((pressed) &&(ready))
