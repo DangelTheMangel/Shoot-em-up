@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PVector;
 import processing.data.StringList;
 
 public class main extends PApplet {
@@ -6,22 +7,23 @@ public class main extends PApplet {
         PApplet.main("main");
     }
 
-    PlayerShip player = new PlayerShip(this);
+    PlayerShip player ;
     @Override
     public void settings() {
-        super.settings();
         size(1000,1000);
     }
 
     @Override
     public void setup() {
-        super.setup();
+        player = new PlayerShip(this,new PVector(0,0),50,50);
+
     }
 
     @Override
     public void draw() {
         clear();
-        player.draw();
+        player.display();
+        player.shoot();
     }
 
     @Override
@@ -33,4 +35,10 @@ public class main extends PApplet {
     public void keyReleased() {
         player.controls(key,keyCode,false);
     }
+
+
+
+
+
+
 }
