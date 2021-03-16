@@ -4,7 +4,7 @@ import processing.core.PVector;
 import static processing.core.PConstants.*;
 import static processing.core.PConstants.LEFT;
 
-public class PlayerShip extends AirShip{
+public class PlayerShip extends Entity {
 
     boolean down,up,left,right = false;
     boolean ready = true;

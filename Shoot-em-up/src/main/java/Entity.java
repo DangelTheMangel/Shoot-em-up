@@ -1,14 +1,14 @@
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public abstract class AirShip {
+public abstract class Entity {
     PApplet p;
 
     int playerWidth = 10;
     int playerHeight= 10;
     PVector position = new PVector();
     PVector velocity = new PVector();
-    AirShip(PApplet p,PVector position,int xSize, int ySize){
+    Entity(PApplet p, PVector position, int xSize, int ySize){
         this.p = p;
         this.position = position;
         this.playerWidth = xSize;

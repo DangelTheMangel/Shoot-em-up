@@ -1,6 +1,5 @@
 import processing.core.PApplet;
 import processing.core.PVector;
-import processing.data.StringList;
 
 public class main extends PApplet {
     public static void main(String[] args) {
@@ -8,7 +7,7 @@ public class main extends PApplet {
     }
 
     PlayerShip player ;
-    BasicEnemyAirShip enemy;
+    BasicEnemyEntity enemy;
     @Override
     public void settings() {
         size(1000,1000);
@@ -17,7 +16,7 @@ public class main extends PApplet {
     @Override
     public void setup() {
         player = new PlayerShip(this,new PVector(width/2,height/2),50,50);
-        enemy = new BasicEnemyAirShip(this,new PVector(0,0),50,50);
+        enemy = new BasicEnemyEntity(this,new PVector(0,0),50,50);
 
     }
 
