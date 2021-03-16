@@ -36,6 +36,10 @@ public class main extends PApplet {
             enemy.move();
             enemy.collisionWithPlayer(player);
             enemy.collisionWithBullets(player.BulletList);
+            if(enemy.dead){
+                enemyList.remove(i);
+                i = i-1;
+            }
 
         }
 

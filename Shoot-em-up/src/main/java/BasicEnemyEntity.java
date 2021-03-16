@@ -38,8 +38,12 @@ public class BasicEnemyEntity extends Entity {
         }
     }
         void collisionWithBullets(ArrayList<Bullet> e){
-            if (collision(position.x, position.y, playerWidth, playerHeight, e.position.x, e.position.y, e.playerWidth, e.playerHeight)) {
+            for(int i = 0 ; i<e.size();++i){
+                Bullet b = e.get(i);
+            if (collision(position.x, position.y, playerWidth, playerHeight, b.position.x, b.position.y, b.playerWidth, b.playerHeight)) {
                 dead = true;
+
+            }
             }
         }
 
