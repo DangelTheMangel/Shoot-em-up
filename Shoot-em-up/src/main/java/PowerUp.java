@@ -1,12 +1,12 @@
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class BasicEnemyEntity extends Entity {
-    int turn = 0;
+public class PowerUp extends Entity {
+    String name;
 
-    BasicEnemyEntity(PApplet p, PVector position, int xSize, int ySize) {
+    BasicEnemyEntity(PApplet p, PVector position, int xSize, int ySize, String n) {
         super(p, position, xSize, ySize);
-
+        name = n;
     }
 
     @Override
@@ -17,15 +17,11 @@ public class BasicEnemyEntity extends Entity {
 
     @Override
     void move() {
-        int sin = (int) (10*p.sin((float) (turn* 0.09)));
-        turn ++;
-        position.x += sin;
-        position.y += 1;
-        if(p.height < position.y){
+        position.y += 1; //Bevæg nedad VVV
+        if(p.height < position.y){ //Despawn mechanic
             position.x = p.random(p.width/4,p.width-p.width/4);
             position.y = 0;
             turn =0;
-
         }
     }
 
