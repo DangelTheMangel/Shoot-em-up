@@ -9,7 +9,6 @@ public class Bullet extends Entity{
     }
     PVector speed = new PVector(0,5);
 
-
     @Override
     void display() {
 
@@ -30,7 +29,4 @@ public class Bullet extends Entity{
     void shoot() {
 
     }
-
-
-
 }
