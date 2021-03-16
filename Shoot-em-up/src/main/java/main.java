@@ -10,7 +10,7 @@ public class main extends PApplet {
 
     PlayerShip player ;
 
-    ArrayList<Entity> enemyList = new ArrayList<Entity>();
+    ArrayList<BasicEnemyEntity> enemyList = new ArrayList<BasicEnemyEntity>();
     @Override
     public void settings() {
         size(1000,1000);
@@ -31,9 +31,12 @@ public class main extends PApplet {
     public void draw() {
         clear();
         for(int i = 0; i<enemyList.size();++i ){
-            Entity enemy = enemyList.get(i);
+            BasicEnemyEntity enemy = enemyList.get(i);
             enemy.display();
             enemy.move();
+            enemy.collisionWithPlayer(player);
+            enemy.collisionWithBullets(player.BulletList);
+
         }
 
         player.display();

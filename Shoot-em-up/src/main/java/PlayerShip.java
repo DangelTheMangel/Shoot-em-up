@@ -37,6 +37,7 @@ public class PlayerShip extends Entity {
             Bullet bulletClass = BulletList.get(i);
             bulletClass.draw();
             bulletClass.move();
+
         }
 
 
