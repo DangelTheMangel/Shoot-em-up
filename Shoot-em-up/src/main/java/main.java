@@ -38,6 +38,7 @@ public class main extends PApplet {
 
         player.display();
         player.shoot();
+
     }
 
     @Override

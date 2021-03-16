@@ -19,7 +19,9 @@ public class PowerUp extends Entity {
     void move() {
         position.y += 1; //Bevæg nedad VVV
         if(p.height < position.y){ //Despawn mechanic
-            this = null;
+            position.x = p.random(p.width/4,p.width-p.width/4);
+            position.y = 0;
+           // turn =0;
         }
     }
 
