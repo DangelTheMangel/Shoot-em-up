@@ -11,7 +11,8 @@ public class PlayerShip extends Entity {
     boolean down,up,left,right = false;
     boolean ready = true;
     boolean actionPressed = false;
-
+    boolean dead = false;
+    int life = 2;
     ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
 
     PlayerShip(PApplet p, PVector position, int playerWidth, int playerWidth2) {
@@ -29,23 +30,31 @@ public class PlayerShip extends Entity {
 
 
     void display(){
-        changePosition();
-        p.rect(position.x,position.y,playerWidth,playerHeight);
-        changePosition();
-
-        for(int i = 0; i<BulletList.size();++i){
-            Bullet bulletClass = BulletList.get(i);
-            bulletClass.draw();
-            bulletClass.move();
-
+        if(life<=0){
+            dead=true;
         }
+        if (dead){
 
-        for(int i = 0; i<BulletList.size();++i){
-            Bullet bulletClass = BulletList.get(i);
-            bulletClass.draw();
-            bulletClass.move();
+        }else {
+            changePosition();
+            p.rect(position.x, position.y, playerWidth, playerHeight);
+            changePosition();
+
+            for (int i = 0; i < BulletList.size(); ++i) {
+                Bullet bulletClass = BulletList.get(i);
+                bulletClass.draw();
+                bulletClass.move();
+
+            }
+
+            for (int i = 0; i < BulletList.size(); ++i) {
+                Bullet bulletClass = BulletList.get(i);
+                bulletClass.draw();
+                bulletClass.move();
+            }
         }
-
+        p.text(life,p.width-20,p.height-20);
+        p.println(dead);
 
     }
 

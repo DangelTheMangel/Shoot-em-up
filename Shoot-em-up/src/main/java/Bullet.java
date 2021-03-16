@@ -7,7 +7,7 @@ public class Bullet extends Entity{
     Bullet(PApplet p, PVector position, int xSize, int ySize) {
         super(p, position, xSize, ySize);
     }
-    PVector speed = new PVector(0,5);
+    PVector speed = new PVector(0,-4);
 
     @Override
     void display() {

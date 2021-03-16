@@ -26,7 +26,7 @@ public class main extends PApplet {
 
 
     }
-        //fsffsaf
+
     @Override
     public void draw() {
         clear();
