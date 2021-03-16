@@ -2,9 +2,9 @@ import processing.core.PApplet;
 import processing.core.PVector;
 
 public class PowerUp extends Entity {
-    String name;
+    String name; //"name" = den powerup det er.
 
-    BasicEnemyEntity(PApplet p, PVector position, int xSize, int ySize, String n) {
+    PowerUp(PApplet p, PVector position, int xSize, int ySize, String n) {
         super(p, position, xSize, ySize);
         name = n;
     }
