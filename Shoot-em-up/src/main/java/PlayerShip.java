@@ -1,6 +1,8 @@
 import processing.core.PApplet;
 import processing.core.PVector;
 
+import java.util.ArrayList;
+
 import static processing.core.PConstants.*;
 import static processing.core.PConstants.LEFT;
 
@@ -9,6 +11,8 @@ public class PlayerShip extends Entity {
     boolean down,up,left,right = false;
     boolean ready = true;
     boolean actionPressed = false;
+   Bullet bulletClass;
+    ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
 
     PlayerShip(PApplet p, PVector position, int playerWidth, int playerWidth2) {
         super(p, position, playerWidth, playerWidth2);
@@ -39,7 +43,7 @@ public class PlayerShip extends Entity {
 
     void shoot(){
         if(actionPressed){
-            System.out.println("bang bang dø");
+
         }
 
     }
@@ -52,8 +56,10 @@ public class PlayerShip extends Entity {
                 case 'f':{
                     if((pressed) && (ready)) {
                         actionPressed = true;
-
-
+                        bulletClass = new Bullet(p,new PVector(position.x,position.y),10,10);
+                        BulletList.add(bulletClass);
+                        bulletClass.draw();
+                        bulletClass.move();
                     }else{
                         actionPressed = false;
                     }

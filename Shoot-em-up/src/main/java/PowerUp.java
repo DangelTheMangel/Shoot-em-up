@@ -21,7 +21,7 @@ public class PowerUp extends Entity {
         if(p.height < position.y){ //Despawn mechanic
             position.x = p.random(p.width/4,p.width-p.width/4);
             position.y = 0;
-            turn =0;
+           // turn =0;
         }
     }
 
