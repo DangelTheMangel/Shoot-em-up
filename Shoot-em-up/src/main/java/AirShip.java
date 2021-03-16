@@ -13,7 +13,7 @@ public abstract class AirShip {
         this.position = position;
         this.playerWidth = xSize;
         this.playerHeight = ySize;
-        position.set(100,this.p.height/2);
+       // position.set(100,this.p.height/2);
     }
 
 

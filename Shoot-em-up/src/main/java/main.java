@@ -8,6 +8,7 @@ public class main extends PApplet {
     }
 
     PlayerShip player ;
+    BasicEnemyAirShip enemy;
     @Override
     public void settings() {
         size(1000,1000);
@@ -15,13 +16,16 @@ public class main extends PApplet {
 
     @Override
     public void setup() {
-        player = new PlayerShip(this,new PVector(0,0),50,50);
+        player = new PlayerShip(this,new PVector(width/2,height/2),50,50);
+        enemy = new BasicEnemyAirShip(this,new PVector(0,0),50,50);
 
     }
 
     @Override
     public void draw() {
         clear();
+        enemy.display();
+        enemy.move();
         player.display();
         player.shoot();
     }
