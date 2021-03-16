@@ -40,6 +40,12 @@ public class PlayerShip extends Entity {
 
         }
 
+        for(int i = 0; i<BulletList.size();++i){
+            Bullet bulletClass = BulletList.get(i);
+            bulletClass.draw();
+            bulletClass.move();
+        }
+
 
     }
 
