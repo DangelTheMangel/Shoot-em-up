@@ -130,7 +130,7 @@ public class PlayerShip extends Entity {
 
 
         }
-        velocity.set(((right)?1:0) +((left)?-1:0),(((up)?-1:0) +((down)?1:0)));
+        velocity.set(((right)?2:0) +((left)?-2:0),(((up)?-2:0) +((down)?2:0)));
     }
 
 
