@@ -25,7 +25,6 @@ public class Bullet extends Entity{
     position.add(speed);
     }
 
-    @Override
     void shoot() {
 
     }

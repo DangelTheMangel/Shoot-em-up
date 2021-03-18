@@ -33,8 +33,7 @@ public class PowerUp extends Entity {
         }
     }
 
-    @Override
-    void shoot() {
+    void issuePowerUp() {
 
     }
 }
