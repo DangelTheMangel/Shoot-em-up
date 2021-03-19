@@ -8,10 +8,7 @@ public class main extends PApplet {
         PApplet.main("main");
     }
 
-    PlayerShip player ;
-    spawnerManger spawnerManger;
-
-    ArrayList<BasicEnemyEntity> enemyList = new ArrayList<BasicEnemyEntity>();
+    PlayScreen playScreen;
     @Override
     public void settings() {
         size(1000,1000);
@@ -19,42 +16,24 @@ public class main extends PApplet {
 
     @Override
     public void setup() {
+        playScreen = new PlayScreen(this);
 
 
-        player = new PlayerShip(this,new PVector(width/2,height/2),50,50);
-        spawnerManger = new spawnerManger(this, enemyList);
-        spawnerManger.startGame();
     }
 
     @Override
     public void draw() {
-        clear();
-        for(int i = 0; i<enemyList.size();++i ){
-            BasicEnemyEntity enemy = enemyList.get(i);
-            enemy.display();
-            enemy.move();
-            enemy.collisionWithPlayer(player);
-            enemy.collisionWithBullets(player.BulletList);
-            if(enemy.dead){
-                enemyList.remove(i);
-                i = i-1;
-            }
-
-        }
-
-        player.display();
-        player.shoot();
-        spawnerManger.spawnEnemy();
+        playScreen.draw();
     }
 
     @Override
     public void keyPressed() {
-        player.controls(key,keyCode,true);
+        playScreen.keyPressed(key,keyCode);
     }
 
     @Override
     public void keyReleased() {
-        player.controls(key,keyCode,false);
+        playScreen.keyReleased(key,keyCode);
     }
 
 
