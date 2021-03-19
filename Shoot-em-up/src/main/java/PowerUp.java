@@ -52,14 +52,14 @@ public class PowerUp extends Entity {
         if(this.name == "SlowBullets"){
 
         }
-        if(this.name == "SlowMo"){
+        else if(this.name == "SlowMo"){
             p.frameRate = 15;
             slowmotimer=75; //Det her svarer til 5 sek slowmo.
         }
-        if(this.name == "HealthPickup"){
+        else if(this.name == "HealthPickup"){
 
         }
-        if(this.name == "Ankh"){
+        else if(this.name == "Ankh"){
 
         }
     }
