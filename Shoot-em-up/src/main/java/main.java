@@ -9,6 +9,7 @@ public class main extends PApplet {
     }
 
     PlayerShip player ;
+    spawnerManger spawnerManger;
 
     ArrayList<BasicEnemyEntity> enemyList = new ArrayList<BasicEnemyEntity>();
     @Override
@@ -18,13 +19,11 @@ public class main extends PApplet {
 
     @Override
     public void setup() {
-        for (int i = 0; i< 10;++i){
-            enemyList.add(new BasicEnemyEntity(this,new PVector(random(width/4,width-width/4),i*10),50,50));
-        }
+
 
         player = new PlayerShip(this,new PVector(width/2,height/2),50,50);
-
-
+        spawnerManger = new spawnerManger(this, enemyList);
+        spawnerManger.startGame();
     }
 
     @Override
@@ -45,7 +44,7 @@ public class main extends PApplet {
 
         player.display();
         player.shoot();
-
+        spawnerManger.spawnEnemy();
     }
 
     @Override
