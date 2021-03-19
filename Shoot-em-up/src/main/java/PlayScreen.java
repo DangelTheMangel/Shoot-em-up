@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class PlayScreen {
     PApplet p;
-    PlayerShip player ;
+    public static PlayerShip player;
     spawnerManger spawnerManger;
 
     ArrayList<BasicEnemyEntity> enemyList = new ArrayList<BasicEnemyEntity>();

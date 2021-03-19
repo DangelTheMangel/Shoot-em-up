@@ -8,6 +8,7 @@ public class PowerUp extends Entity {
     float slowmotimer = 0;
 
     //en player
+    PlayerShip Pls = PlayScreen.player;
     //en players bullets
 
     PowerUp(PApplet p, PVector position, int xSize, int ySize, String n) {
@@ -57,10 +58,10 @@ public class PowerUp extends Entity {
             slowmotimer=75; //Det her svarer til 5 sek slowmo.
         }
         else if(this.name == "HealthPickup"){
-
+            Pls.life++;
         }
         else if(this.name == "Ankh"){
-
+            Pls.ankhed= true;
         }
     }
 }
