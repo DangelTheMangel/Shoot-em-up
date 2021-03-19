@@ -23,6 +23,9 @@ public class main extends PApplet {
 
     @Override
     public void draw() {
+        if(playScreen.player.dead){
+            playScreen = new PlayScreen(this);
+        }
         playScreen.draw();
     }
 
