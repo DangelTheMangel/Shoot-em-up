@@ -25,7 +25,7 @@ public class Bullet extends Entity{
     position.add(speed);
     }
 
-    void shoot() {
+    void issuePowerUp() {
 
     }
 }

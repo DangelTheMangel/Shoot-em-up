@@ -15,6 +15,9 @@ public class PlayerShip extends Entity {
     int life = 2;
     ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
 
+    //spam
+    boolean ankhed = false;
+
     PlayerShip(PApplet p, PVector position, int playerWidth, int playerWidth2) {
         super(p, position, playerWidth, playerWidth2);
 
@@ -24,8 +27,8 @@ public class PlayerShip extends Entity {
     void changePosition(){
 
         position.add(velocity);
-        position.x =p.constrain(position.x,0,p.width-playerWidth);
-        position.y=  p.constrain(position.y,0,p.height-playerHeight);
+        position.x = p.constrain(position.x,0,p.width-playerWidth);
+        position.y = p.constrain(position.y,0,p.height-playerHeight);
     }
 
 

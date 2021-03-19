@@ -3,6 +3,7 @@ import processing.core.PVector;
 
 public class PowerUp extends Entity {
     String name; //"name" = den powerup det er.
+    boolean active;
 
     PowerUp(PApplet p, PVector position, int xSize, int ySize, String n) {
         super(p, position, xSize, ySize);
@@ -27,13 +28,26 @@ public class PowerUp extends Entity {
             Den går bare ud af skærmen når den ikke bliver brugt.
 
              */
-            position.x = p.random(p.width/4,p.width-p.width/4);
-            position.y = 0;
+            position.x = -100;
+            position.y = -100;
+            active = false;
            // turn =0;
         }
     }
 
     void issuePowerUp() {
+        //yanderedev kode men det gør ikke noget
+        if(this.name == "SlowBullets"){
 
+        }
+        if(this.name == "SlowMo"){
+            p.frameRate = 15;
+        }
+        if(this.name == "HealthPickup"){
+
+        }
+        if(this.name == "Ankh"){
+
+        }
     }
 }
