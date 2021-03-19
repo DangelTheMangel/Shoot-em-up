@@ -1,6 +1,8 @@
 import processing.core.PApplet;
 import processing.core.PVector;
 
+import java.util.ArrayList;
+
 public abstract class Entity {
     PApplet p;
 
@@ -19,6 +21,8 @@ public abstract class Entity {
 
 
     abstract void display();
+
+
     abstract void move();
 
     boolean collision(float px, float py, float pw, float ph, float rx, float ry, float rw, float rh){

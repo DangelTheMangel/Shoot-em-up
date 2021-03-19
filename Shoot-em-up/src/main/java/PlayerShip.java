@@ -57,7 +57,7 @@ public class PlayerShip extends Entity {
             }
         }
         p.text(life,p.width-20,p.height-20);
-        p.println(dead);
+
 
     }
 
@@ -81,7 +81,7 @@ public class PlayerShip extends Entity {
                 case 'f':{
                     if((pressed) && (ready)) {
                         actionPressed = true;
-                        Bullet bulletClass = new Bullet(p,new PVector(position.x,position.y),10,10);
+                        Bullet bulletClass = new Bullet(p,new PVector(0,-4),new PVector(position.x,position.y),10,10);
                         BulletList.add(bulletClass);
 
                     }else{
