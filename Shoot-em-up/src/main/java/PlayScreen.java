@@ -10,7 +10,7 @@ public class PlayScreen {
     public static PlayerShip player;
     spawnerManger spawnerManger;
 
-    ArrayList<BasicEnemyEntity> enemyList = new ArrayList<BasicEnemyEntity>();
+    ArrayList<Entity> enemyList = new ArrayList<Entity>();
 
     PlayScreen(PApplet p){
         this.p = p;
@@ -23,7 +23,7 @@ public class PlayScreen {
     void draw(){
         p.clear();
         for(int i = 0; i<enemyList.size();++i ){
-            BasicEnemyEntity enemy = enemyList.get(i);
+            BasicEnemyEntity enemy = (BasicEnemyEntity) enemyList.get(i);
             enemy.display();
             enemy.move();
             enemy.collisionWithPlayer(player);
@@ -34,7 +34,7 @@ public class PlayScreen {
             }
 
         }
-
+        p.text("HP: " + player.life, 10,p.height-200 );
         player.display();
         player.shoot();
         spawnerManger.spawnEnemy();

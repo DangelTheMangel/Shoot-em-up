@@ -61,7 +61,7 @@ public class BasicEnemyEntity extends Entity {
 
     void collisionWithPlayer(PlayerShip s) {
         if (collision(s.position.x, s.position.y, s.playerWidth, s.playerHeight, position.x, position.y, playerWidth, playerHeight)) {
-            s.position.x = -4000;
+            s.position.y += 20;
             s.life = s.life-1;
         }
     }
