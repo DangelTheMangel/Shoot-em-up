@@ -50,17 +50,17 @@ public class PowerUp extends Entity {
 
     void issuePowerUp() {
         //yanderedev kode men det gør ikke noget
-        if(this.name == "SlowBullets"){
+        if(this.name.equals("SlowBullets")){
 
         }
-        else if(this.name == "SlowMo"){
+        else if(this.name.equals("SlowMo")){
             p.frameRate = 15;
             slowmotimer=75; //Det her svarer til 5 sek slowmo.
         }
-        else if(this.name == "HealthPickup"){
+        else if(this.name.equals("HealthPickup")){
             Pls.life++;
         }
-        else if(this.name == "Ankh"){
+        else if(this.name.equals("Ankh")){
             Pls.ankhed = true;
         }
     }
