@@ -15,7 +15,7 @@ public class PlayScreen {
 
     PlayScreen(PApplet p){
         this.p = p;
-        PowerUp powerUp = new PowerUp(p,new PVector(p.width/2,0),50,50, "HealthPickup" );
+        PowerUp powerUp = new PowerUp(p,new PVector(p.width/2,0),50,50, "SlowMo" );
         powerUpList.add(null);
         powerUpList.add(powerUp);
         player = new PlayerShip(p,new PVector(p.width/2,p.height/2),50,50);
@@ -32,6 +32,7 @@ public class PlayScreen {
             enemy.move();
             enemy.collisionWithPlayer(player);
             enemy.collisionWithBullets(player.BulletList);
+            player.collisionWithBullets(enemy.BulletList);
             if(enemy.dead){
                 enemyList.remove(i);
                 i = i-1;

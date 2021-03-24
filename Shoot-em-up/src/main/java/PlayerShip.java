@@ -170,6 +170,15 @@ public class PlayerShip extends Entity {
         velocity.set(((right)?2:0) +((left)?-2:0),(((up)?-2:0) +((down)?2:0)));
     }
 
+    void collisionWithBullets(ArrayList<Bullet> e){
+        for(int i = 0 ; i<e.size();++i){
+            Bullet b = e.get(i);
+            if (collision(position.x, position.y, playerWidth, playerHeight, b.position.x, b.position.y, b.playerWidth, b.playerHeight)) {
+                life--;
+
+            }
+        }
+    }
 
 
 

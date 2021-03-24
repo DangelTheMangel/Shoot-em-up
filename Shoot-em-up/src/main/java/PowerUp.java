@@ -46,7 +46,7 @@ public class PowerUp extends Entity {
 
             //bullet ting
             if(bulletTimer<0){
-                Pls.bulletSpeed = -4;
+              //  Pls.bulletSpeed = -4;
             }else{
                 bulletTimer-=1;
             }
@@ -63,7 +63,7 @@ public class PowerUp extends Entity {
     void issuePowerUp(PlayerShip player) {
         //yanderedev kode men det gør ikke noget
         if(this.name.equals("SlowBullets")){
-            Pls.bulletSpeed = -2;
+            player.bulletSpeed = -2;
             bulletTimer=300;
         }
         else if(this.name.equals("SlowMo")){

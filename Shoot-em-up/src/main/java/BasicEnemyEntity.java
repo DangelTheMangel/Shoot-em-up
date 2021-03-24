@@ -65,6 +65,8 @@ public class BasicEnemyEntity extends Entity {
             s.life = s.life-1;
         }
     }
+
+
         void collisionWithBullets(ArrayList<Bullet> e){
             for(int i = 0 ; i<e.size();++i){
                 Bullet b = e.get(i);

@@ -42,7 +42,6 @@ public class spawnerManger {
             String s = powerUpTypes[(int) p.random(0,powerUpTypes.length)];
             PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),-10);
             PowerUp powerUp = new PowerUp(p,pos,50,50, s );
-
             powerUpList.add(powerUp);
             spawnRate = (int) p.random(2000,10000);
         }
