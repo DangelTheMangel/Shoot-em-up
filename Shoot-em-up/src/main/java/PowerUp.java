@@ -61,7 +61,7 @@ public class PowerUp extends Entity {
             Pls.life++;
         }
         else if(this.name == "Ankh"){
-            Pls.ankhed= true;
+            Pls.ankhed = true;
         }
     }
 }
