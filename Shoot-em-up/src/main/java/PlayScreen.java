@@ -19,7 +19,7 @@ public class PlayScreen {
         powerUpList.add(null);
         powerUpList.add(powerUp);
         player = new PlayerShip(p,new PVector(p.width/2,p.height/2),50,50);
-        spawnerManger = new spawnerManger(p, enemyList, powerUpList);
+        spawnerManger = new spawnerManger(p, enemyList, powerUpList,player);
         spawnerManger.spawnEnemy();
 
     }
@@ -31,7 +31,7 @@ public class PlayScreen {
             enemy.display();
             enemy.move();
             enemy.collisionWithPlayer(player);
-            enemy.collisionWithBullets(player.BulletList);
+            enemy.collisionWithBullets(player);
             player.collisionWithBullets(enemy.BulletList);
             if(enemy.dead){
                 enemyList.remove(i);
@@ -39,11 +39,10 @@ public class PlayScreen {
             }
 
         }
-        p.text("HP: " + player.life, 10,p.height-200 );
+        p.text("HP: " + player.life + "\nSCORE:\n" + player.score, 10,p.height-200 );
         player.display();
         player.shoot();
         spawnerManger.spawnEnemy();
-        spawnerManger.spawnPowerUp();
         //powerup
 
         for(int i = 0; i<powerUpList.size();++i ) {

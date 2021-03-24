@@ -12,7 +12,8 @@ public class PlayerShip extends Entity {
     boolean ready = true;
     boolean actionPressed = false;
     boolean dead = false;
-    int life = 2;
+    int score = 0;
+    int life = 100;
 
     ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
 
@@ -63,7 +64,7 @@ public class PlayerShip extends Entity {
                 bulletClass.move();
             }
         }
-        p.text(life,p.width-20,p.height-20);
+
 
 
     }

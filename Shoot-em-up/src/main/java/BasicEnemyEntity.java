@@ -67,11 +67,13 @@ public class BasicEnemyEntity extends Entity {
     }
 
 
-        void collisionWithBullets(ArrayList<Bullet> e){
+        void collisionWithBullets(PlayerShip playerShip){
+            ArrayList<Bullet> e = playerShip.BulletList;
             for(int i = 0 ; i<e.size();++i){
                 Bullet b = e.get(i);
             if (collision(position.x, position.y, playerWidth, playerHeight, b.position.x, b.position.y, b.playerWidth, b.playerHeight)) {
                 dead = true;
+                playerShip.score ++;
 
             }
             }

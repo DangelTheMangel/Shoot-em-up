@@ -9,20 +9,23 @@ public class spawnerManger {
     String[] powerUpTypes = {"HealthPickup", "SlowBullets", "SlowMo", "Ankh"};
     ArrayList<Entity> enemyList;
     ArrayList<PowerUp> powerUpList ;
+    PlayerShip player;
     PowerUp powerUp ;
     int spawnRate ;
-    spawnerManger(PApplet p, ArrayList<Entity> enemyList, ArrayList<PowerUp> powerUpList){
+    spawnerManger(PApplet p, ArrayList<Entity> enemyList, ArrayList<PowerUp> powerUpList,PlayerShip player){
         this.p = p;
         this.enemyList = enemyList;
         this.powerUpList = powerUpList;
         spawnRate = (int) p.random(2000,10000);
+        this.player = player;
     }
 
 
 
     void spawnEnemy(){
       if(enemyList.size() < 2){
-            for (int i = 0; i< p.random(5,20);++i){
+                player.score += 10;
+            for (int i = 0; i< p.random(5,50);++i){
 
                 if(Math.random() < 0.7) {
                     float timer = p.random(0,500);
