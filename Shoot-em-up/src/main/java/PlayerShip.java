@@ -13,10 +13,12 @@ public class PlayerShip extends Entity {
     boolean actionPressed = false;
     boolean dead = false;
     int life = 2;
+
     ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
 
     //spam
     boolean ankhed = false;
+    float bulletSpeed;
 
     PlayerShip(PApplet p, PVector position, int playerWidth, int playerWidth2) {
         super(p, position, playerWidth, playerWidth2);
