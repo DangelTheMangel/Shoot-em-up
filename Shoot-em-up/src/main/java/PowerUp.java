@@ -6,10 +6,10 @@ public class PowerUp extends Entity {
     boolean active;
 
     float slowmotimer = 0;
+    float bulletTimer = 0;
 
     //en player
     PlayerShip Pls = PlayScreen.player;
-    //en players bullets
 
     PowerUp(PApplet p, PVector position, int xSize, int ySize, String n) {
         super(p, position, xSize, ySize);
@@ -45,13 +45,21 @@ public class PowerUp extends Entity {
             }else{
                 slowmotimer-=1;
             }
+
+            //bullet ting
+            if(bulletTimer<0){
+                Pls.bulletSpeed = -4;
+            }else{
+                bulletTimer-=1;
+            }
         }
     }
 
     void issuePowerUp() {
         //yanderedev kode men det gør ikke noget
         if(this.name.equals("SlowBullets")){
-
+            Pls.bulletSpeed = -2;
+            bulletTimer=300;
         }
         else if(this.name.equals("SlowMo")){
             p.frameRate = 15;

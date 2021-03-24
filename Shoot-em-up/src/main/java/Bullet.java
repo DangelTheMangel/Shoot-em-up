@@ -3,7 +3,6 @@ import processing.core.PVector;
 
 public class Bullet extends Entity{
 
-
     Bullet(PApplet p, PVector speed, PVector position, int xSize, int ySize) {
         super(p, position, xSize, ySize);
         this.speed = speed;
