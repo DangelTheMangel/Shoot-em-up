@@ -65,16 +65,16 @@ public class PowerUp extends Entity {
         if(this.name.equals("SlowBullets")){
             player.bulletSpeed = -2;
             bulletTimer=300;
-        }
-        else if(this.name.equals("SlowMo")){
+        } else if(this.name.equals("SlowMo")){
             p.frameRate = 15;
             slowmotimer=75; //Det her svarer til 5 sek slowmo.
-        }
-        else if(this.name.equals("HealthPickup")){
+        } else if(this.name.equals("HealthPickup")){
             player.life++;
-        }
-        else if(this.name.equals("Ankh")){
+        } else if(this.name.equals("Ankh")){
             player.ankhed = true;
+        } else if(this.name.equals("Jesos")){
+            player.BulletList.clear();
+            player.position.y -= p.height;
         }
     }
 }
