@@ -1,34 +1,50 @@
 import processing.core.PApplet;
 import processing.core.PVector;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class spawnerManger {
     PApplet p;
+    String[] powerUpTypes = {"HealthPickup", "SlowBullets", "SlowMo", "Ankh"};
     ArrayList<Entity> enemyList;
-    spawnerManger(PApplet p, ArrayList<Entity> enemyList){
+    ArrayList<PowerUp> powerUpList ;
+    PowerUp powerUp ;
+    int spawnRate ;
+    spawnerManger(PApplet p, ArrayList<Entity> enemyList, ArrayList<PowerUp> powerUpList){
         this.p = p;
         this.enemyList = enemyList;
+        this.powerUpList = powerUpList;
+        spawnRate = (int) p.random(2000,10000);
     }
 
-    void startGame(){
-        for (int i = 0; i< 1;++i){
-            PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),i*10);
-            enemyList.add(new BasicEnemyEntity(p,pos,50,50,p.random(0,50)));
+
+
+    void spawnEnemy(){
+      if(enemyList.size() < 2){
+            for (int i = 0; i< p.random(5,20);++i){
+
+                if(Math.random() < 0.7) {
+                    float timer = p.random(0,500);
+                    PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),i*10);
+                    enemyList.add(new BasicEnemyEntity(p,pos, 50, 50, timer));
+                }else{
+                    float timer = p.random(0,500);
+                    PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),i*10);
+                    enemyList.add(new TanEnemy(p,pos, 50, 50, timer));
+                }
+            }
         }
     }
 
-    void spawnEnemy(){
-       if(enemyList.size() < 2){
-            for (int i = 0; i< p.random(5,20);++i){
-                if(Math.random() < 0.7) {
-                    PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),i*10);
-                    enemyList.add(new BasicEnemyEntity(p,pos, 50, 50, p.random(0,50)));
-                }else{
-                    PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),i*10);
-                    enemyList.add(new TanEnemy(p,pos, 50, 50, p.random(0,50)));
-                }
-            }
+    void spawnPowerUp(){
+        if(p.frameCount% spawnRate==0){
+            String s = powerUpTypes[(int) p.random(0,powerUpTypes.length)];
+            PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),-10);
+            PowerUp powerUp = new PowerUp(p,pos,50,50, s );
+
+            powerUpList.add(powerUp);
+            spawnRate = (int) p.random(2000,10000);
         }
     }
 }
