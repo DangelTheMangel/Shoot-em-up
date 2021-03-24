@@ -16,17 +16,18 @@ public class TanEnemy extends BasicEnemyEntity {
             timer = 0;
         }*/
 
-        int tan = (int) ( p.tan(turn* swing) );
+        float tan = 10*p.tan((float) (turn* 0.0009));
         turn += 1;
 
-        System.out.println(position.x);
+
         position.x += tan;
         position.y += 0.25;
-        if(position.x < 0){
-            position.x = p.random(p.width / 4, p.width - p.width / 4);
+        if(position.x > p.width){
+            position.x = -10;
+            turn =0;
         }
         if(p.height < position.y){
-            position.x = p.random(p.width/4,p.width-p.width/4);
+            position.x = p.random(0,p.width);
             position.y = 0;
             turn =0;
 

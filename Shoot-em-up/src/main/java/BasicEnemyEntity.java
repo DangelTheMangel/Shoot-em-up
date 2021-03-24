@@ -27,7 +27,7 @@ public class BasicEnemyEntity extends Entity {
     void move() {
         timer = timer +1;
         p.println(timer);
-        if(timer>61){
+        if(timer>500){
             timer = 0;
         }
         int sin = (int) (10*p.sin((float) (turn * swing)));

@@ -9,7 +9,7 @@ public class PowerUp extends Entity {
     float bulletTimer = 0;
 
     //en player
-    PlayerShip Pls = PlayScreen.player;
+   // PlayerShip Pls = PlayScreen.player;
 
     PowerUp(PApplet p, PVector position, int xSize, int ySize, String n) {
         super(p, position, xSize, ySize);
@@ -18,24 +18,22 @@ public class PowerUp extends Entity {
 
     @Override
     void display() {
+        p.fill(255,0,0);
+
         p.ellipse(position.x,position.y,playerWidth,playerHeight);
+        p.fill(255);
+        p.text(name,position.x - p.textWidth(name)/2,position.y);
+
         move();
     }
 
     @Override
     void move() {
-        position.y += 1; //Bevæg nedad VVV
-        if(p.height < position.y){ //Despawn mechanic
-            /*
+        position.y += 1; //Bevæg nedad
+        if(p.height < position.y){
 
-            Den er fræk og despanwer ikke.
-            Dette følger at der kun skal være 1 powerup på skærmen ad gangen.
-            Så hvorfor ikke bare have den ene?
-            Den går bare ud af skærmen når den ikke bliver brugt.
 
-             */
-            position.x = -100;
-            position.y = -100;
+            position.y = -1000;
             active = false;
            // turn =0;
 
@@ -54,8 +52,15 @@ public class PowerUp extends Entity {
             }
         }
     }
-
-    void issuePowerUp() {
+    boolean collsionWithPlayer(PlayerShip player){
+        if(collision(position.x, position.y, playerWidth, playerHeight, player.position.x, player.position.y, player.playerWidth, player.playerHeight)){
+            issuePowerUp(player);
+            return true;
+        } else{
+            return false;
+        }
+    }
+    void issuePowerUp(PlayerShip player) {
         //yanderedev kode men det gør ikke noget
         if(this.name.equals("SlowBullets")){
             Pls.bulletSpeed = -2;
@@ -66,10 +71,10 @@ public class PowerUp extends Entity {
             slowmotimer=75; //Det her svarer til 5 sek slowmo.
         }
         else if(this.name.equals("HealthPickup")){
-            Pls.life++;
+            player.life++;
         }
         else if(this.name.equals("Ankh")){
-            Pls.ankhed = true;
+            player.ankhed = true;
         }
     }
 }

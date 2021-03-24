@@ -7,16 +7,20 @@ import java.util.ArrayList;
 
 public class PlayScreen {
     PApplet p;
-    public static PlayerShip player;
+    PlayerShip player;
     spawnerManger spawnerManger;
 
+    ArrayList<PowerUp> powerUpList = new ArrayList<PowerUp>();
     ArrayList<Entity> enemyList = new ArrayList<Entity>();
 
     PlayScreen(PApplet p){
         this.p = p;
+        PowerUp powerUp = new PowerUp(p,new PVector(p.width/2,0),50,50, "HealthPickup" );
+        powerUpList.add(null);
+        powerUpList.add(powerUp);
         player = new PlayerShip(p,new PVector(p.width/2,p.height/2),50,50);
-        spawnerManger = new spawnerManger(p, enemyList);
-        spawnerManger.startGame();
+        spawnerManger = new spawnerManger(p, enemyList, powerUpList);
+        spawnerManger.spawnEnemy();
 
     }
 
@@ -38,7 +42,19 @@ public class PlayScreen {
         player.display();
         player.shoot();
         spawnerManger.spawnEnemy();
+        spawnerManger.spawnPowerUp();
+        //powerup
 
+        for(int i = 0; i<powerUpList.size();++i ) {
+
+            PowerUp powerUp = powerUpList.get(i);
+            if(powerUp != null) {
+                powerUp.display();
+                if(powerUp.collsionWithPlayer(player)){
+                   powerUpList.remove(i);
+                }
+            }
+        }
     }
 
     void keyPressed(char key, int keyCode ){
