@@ -33,11 +33,13 @@ public class PlayerShip extends Entity {
 
 
     void display(){
-        if(life<=0&&ankhed){
+        if(life<=0 & ankhed){
             life=1;
             ankhed=false;
-        }else{
+        }else if(life<=0){
             dead=true;
+        }else{
+            dead=false;
         }
         if (dead){
 
