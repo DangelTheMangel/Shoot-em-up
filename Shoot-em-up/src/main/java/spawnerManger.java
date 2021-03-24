@@ -6,7 +6,14 @@ import java.util.ArrayList;
 
 public class spawnerManger {
     PApplet p;
-    String[] powerUpTypes = {"HealthPickup", "SlowBullets", "SlowMo", "Ankh"};
+    String[] powerUpTypes = {
+            "HealthPickup", "HealthPickup", "HealthPickup", "HealthPickup", "HealthPickup", "HealthPickup",
+            "SlowBullets", "SlowBullets","SlowBullets",
+            "SlowMo", "SlowMo","SlowMo",
+            "Ankh",
+            "Jesos"
+    };
+
     ArrayList<Entity> enemyList;
     ArrayList<PowerUp> powerUpList ;
     PlayerShip player;
