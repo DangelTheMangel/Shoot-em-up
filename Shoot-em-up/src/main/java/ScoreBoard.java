@@ -17,7 +17,7 @@ public class ScoreBoard extends Menu{
 
         btnList.add(btnPlay);
     }
-    }
+    
 
     @Override
     void draw() {
