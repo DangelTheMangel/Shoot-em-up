@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class PlayScreen {
     PApplet p;
-    Boolean visibale = true;
+    Boolean visibale = false;
     PlayerShip player;
     spawnerManger spawnerManger;
 
@@ -40,7 +40,7 @@ public class PlayScreen {
             }
 
         }
-        p.text("HP: " + player.life + "\nSCORE:\n" + player.score, 10,p.height-200 );
+        p.text("HP: " + player.life + "\nSCORE:\n" + player.score, 100,p.height-200 );
         player.display();
         player.shoot();
         spawnerManger.spawnEnemy();

@@ -1,11 +1,10 @@
 import processing.core.PApplet;
 
-public class ScoreBoard extends Menu{
-    PlayScreen playScreen;
-    ScoreBoard(PApplet p, PlayScreen playScreen) {
+public class SettingsMenu extends Menu {
+
+
+    SettingsMenu(PApplet p) {
         super(p);
-        this.playScreen = playScreen;
-        visibale = false;
         Button btnBack = new Button(p.width/2,p.height-200,200,50,"Back",p);
         btnBack.addAction(new Action() {
             @Override
@@ -16,8 +15,8 @@ public class ScoreBoard extends Menu{
         });
 
         btnList.add(btnBack);
+
     }
-    
 
     @Override
     void draw() {
