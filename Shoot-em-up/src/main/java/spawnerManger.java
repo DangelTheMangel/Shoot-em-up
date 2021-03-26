@@ -23,7 +23,7 @@ public class spawnerManger {
         this.p = p;
         this.enemyList = enemyList;
         this.powerUpList = powerUpList;
-        spawnRate = (int) p.random(2000,10000);
+        spawnRate = (int) p.random(2000,6000);
         this.player = player;
     }
 
@@ -48,12 +48,13 @@ public class spawnerManger {
     }
 
     void spawnPowerUp(){
+        System.out.println("\n spawnrate " + (p.frameCount% spawnRate));
         if(p.frameCount% spawnRate==0){
             String s = powerUpTypes[(int) p.random(0,powerUpTypes.length)];
             PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),-10);
             PowerUp powerUp = new PowerUp(p,pos,50,50, s );
             powerUpList.add(powerUp);
-            spawnRate = (int) p.random(2000,10000);
+            spawnRate = (int) p.random(2000,6000);
         }
     }
 }

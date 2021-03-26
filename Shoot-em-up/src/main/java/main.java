@@ -9,6 +9,7 @@ public class main extends PApplet {
     }
 
     PlayScreen playScreen;
+    MainMenu mainMenu;
     @Override
     public void settings() {
         size(1000,1000);
@@ -19,16 +20,20 @@ public class main extends PApplet {
     public void setup() {
         frameRate(60);
         playScreen = new PlayScreen(this);
-
+        mainMenu = new MainMenu(this,playScreen);
 
     }
 
     @Override
     public void draw() {
-        if(playScreen.player.dead){
-            playScreen = new PlayScreen(this);
+        if(playScreen.visibale){
+            if(playScreen.player.dead){
+                playScreen = new PlayScreen(this);
+            }
+            playScreen.draw();
         }
-        playScreen.draw();
+
+        mainMenu.display();
     }
 
     @Override
@@ -41,9 +46,8 @@ public class main extends PApplet {
         playScreen.keyReleased(key,keyCode);
     }
 
-
-
-
-
-
+    @Override
+    public void mousePressed() {
+        mainMenu.mousePressed(mouseX,mouseY);
+    }
 }

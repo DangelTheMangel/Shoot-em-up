@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class PlayScreen {
     PApplet p;
+    Boolean visibale = false;
     PlayerShip player;
     spawnerManger spawnerManger;
 
@@ -15,7 +16,7 @@ public class PlayScreen {
 
     PlayScreen(PApplet p){
         this.p = p;
-        PowerUp powerUp = new PowerUp(p,new PVector(p.width/2,0),50,50, "SlowMo" );
+        PowerUp powerUp = new PowerUp(p,new PVector(p.width/2,0),50,50, "Jesos" );
         powerUpList.add(null);
         powerUpList.add(powerUp);
         player = new PlayerShip(p,new PVector(p.width/2,p.height/2),50,50);
@@ -43,6 +44,7 @@ public class PlayScreen {
         player.display();
         player.shoot();
         spawnerManger.spawnEnemy();
+        spawnerManger.spawnPowerUp();
         //powerup
 
         for(int i = 0; i<powerUpList.size();++i ) {
@@ -57,6 +59,7 @@ public class PlayScreen {
         }
     }
 
+
     void keyPressed(char key, int keyCode ){
         player.controls(key,keyCode,true);
     }
@@ -64,4 +67,6 @@ public class PlayScreen {
     void keyReleased(char key, int keyCode) {
         player.controls(key,keyCode,false);
     }
+
+
 }
