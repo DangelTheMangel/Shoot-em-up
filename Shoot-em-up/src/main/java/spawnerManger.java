@@ -11,7 +11,9 @@ public class spawnerManger {
             "SlowBullets", "SlowBullets","SlowBullets",
             "SlowMo", "SlowMo","SlowMo",
             "Ankh",
-            "Jesos"
+            "Jesos",
+            "fastBullets","fastBullets",
+            "burstMode",
     };
 
     ArrayList<Entity> enemyList;

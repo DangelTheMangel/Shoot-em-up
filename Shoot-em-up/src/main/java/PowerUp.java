@@ -63,7 +63,7 @@ public class PowerUp extends Entity {
     void issuePowerUp(PlayerShip player) {
         //yanderedev kode men det gør ikke noget
         if(this.name.equals("SlowBullets")){
-            player.bulletSpeed = -2;
+            player.endTimer = 40;
             bulletTimer=300;
         } else if(this.name.equals("SlowMo")){
             p.frameRate = 15;
@@ -76,5 +76,12 @@ public class PowerUp extends Entity {
             player.BulletList.clear();
             player.position.y -= p.height;
         }
+        else if(this.name.equals("burstMode")){
+            player.slutBurst = 5;
+        }
+        else if(this.name.equals("fastBullets")){
+            player.endTimer=10;
+        }
+
     }
 }
