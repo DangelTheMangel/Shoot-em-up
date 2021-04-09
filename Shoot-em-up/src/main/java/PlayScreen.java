@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class PlayScreen {
     PApplet p;
-    Boolean visibale = false;
+    Boolean visibale = true;
     PlayerShip player;
     spawnerManger spawnerManger;
 

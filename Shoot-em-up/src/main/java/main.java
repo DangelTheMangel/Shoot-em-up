@@ -28,7 +28,7 @@ public class main extends PApplet {
         tutorialScreen = new tutorialScreen(this);
         settingsMenu = new SettingsMenu(this);
         scoreBoardMenu = new ScoreBoard(this,playScreen);
-        mainMenu = new MainMenu(this,playScreen,settingsMenu,tutorialScreen);
+        mainMenu = new MainMenu(this,playScreen);
     }
 
     @Override

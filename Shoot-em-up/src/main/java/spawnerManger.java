@@ -48,7 +48,7 @@ public class spawnerManger {
     }
 
     void spawnPowerUp(){
-        System.out.println("\n spawnrate " + (p.frameCount% spawnRate));
+        //System.out.println("\n spawnrate " + (p.frameCount% spawnRate));
         if(p.frameCount% spawnRate==0){
             String s = powerUpTypes[(int) p.random(0,powerUpTypes.length)];
             PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),-10);

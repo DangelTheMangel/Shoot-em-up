@@ -26,7 +26,7 @@ public class BasicEnemyEntity extends Entity {
     @Override
     void move() {
         timer = timer +1;
-        p.println(timer);
+
         if(timer>500){
             timer = 0;
         }
