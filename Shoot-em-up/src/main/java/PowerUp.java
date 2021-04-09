@@ -6,7 +6,7 @@ public class PowerUp extends Entity {
     boolean active;
 
     float slowmotimer = 0;
-    float bulletTimer = 0;
+
 
     //en player
    // PlayerShip Pls = PlayScreen.player;
@@ -45,13 +45,12 @@ public class PowerUp extends Entity {
             }
 
             //bullet ting
-            if(bulletTimer<0){
-              //  Pls.bulletSpeed = -4;
-            }else{
-                bulletTimer-=1;
+
+
             }
+
         }
-    }
+
     boolean collsionWithPlayer(PlayerShip player){
         if(collision(position.x, position.y, playerWidth, playerHeight, player.position.x, player.position.y, player.playerWidth, player.playerHeight)){
             issuePowerUp(player);
@@ -61,10 +60,14 @@ public class PowerUp extends Entity {
         }
     }
     void issuePowerUp(PlayerShip player) {
+
         //yanderedev kode men det gør ikke noget
         if(this.name.equals("SlowBullets")){
+            if(player.stopPowerUp) {
+                player.endTimer = 20;
+            }
             player.endTimer = 40;
-            bulletTimer=300;
+            player.powerUpTimer=200;
         } else if(this.name.equals("SlowMo")){
             p.frameRate = 15;
             slowmotimer=75; //Det her svarer til 5 sek slowmo.
@@ -77,10 +80,20 @@ public class PowerUp extends Entity {
             player.position.y -= p.height;
         }
         else if(this.name.equals("burstMode")){
+            if(player.stopPowerUp) {
+                player.slutBurst = 0;
+            }
             player.slutBurst = 5;
+            player.powerUpTimer = 200;
         }
         else if(this.name.equals("fastBullets")){
+            if(player.stopPowerUp) {
+                player.endTimer = 20;
+            }
             player.endTimer=10;
+            player.powerUpTimer  =200;
+
+
         }
 
     }

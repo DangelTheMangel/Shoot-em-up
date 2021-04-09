@@ -13,6 +13,8 @@ public class PlayerShip extends Entity {
     boolean ready = true;
     boolean actionPressed = false;
     boolean dead = false;
+    float powerUpTimer = -1;
+    boolean stopPowerUp = false;
     int score = 0;
     int life = 100;
 
@@ -47,7 +49,12 @@ public class PlayerShip extends Entity {
         if(timer >endTimer){
             timer = 0;
         }
-        p.println(actionPressed);
+        powerUpTimer-=1;
+        if(powerUpTimer<0){
+            stopPowerUp = true;
+            powerUpTimer = -1;
+        }
+        p.println(powerUpTimer);
         if(life<=0 & ankhed){
             life=1;
             ankhed=false;

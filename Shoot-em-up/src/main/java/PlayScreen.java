@@ -16,7 +16,7 @@ public class PlayScreen {
 
     PlayScreen(PApplet p){
         this.p = p;
-        PowerUp powerUp = new PowerUp(p,new PVector(p.width/2,0),50,50, "Jesos" );
+        PowerUp powerUp = new PowerUp(p,new PVector(p.width/2,0),50,50, "burstMode" );
         powerUpList.add(null);
         powerUpList.add(powerUp);
         player = new PlayerShip(p,new PVector(p.width/2,p.height/2),50,50);
