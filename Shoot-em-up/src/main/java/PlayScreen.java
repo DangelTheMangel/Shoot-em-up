@@ -23,7 +23,7 @@ public class PlayScreen {
     ArrayList<PowerUp> powerUpList = new ArrayList<PowerUp>();
     ArrayList<Entity> enemyList = new ArrayList<Entity>();
 
-    PlayScreen(PApplet p){
+    PlayScreen(PApplet p,Table scorebord){
         this.p = p;
         this.scorebord = scorebord;
 
@@ -39,6 +39,35 @@ public class PlayScreen {
         spawnerManger = new spawnerManger(p, enemyList, powerUpList,player);
         spawnerManger.spawnEnemy();
 
+    }
+
+    void saveScooreBord() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String date = dtf.format(now);
+        String name = "AlbertGaming";
+        String score = String.valueOf(player.score);
+
+        int rowC = scorebord.getRowCount();
+        scorebord.setString(rowC,0,name);
+        scorebord.setString(rowC,1,score);
+        scorebord.setString(rowC,2,date);
+
+        boolean success = p.saveTable(scorebord,"/src/main/java/resources/scorebord.csv");
+        System.out.println("done: " + success);
+    }
+
+    void newGame() {
+        visibale = false;
+
+        powerUpList.clear();
+        enemyList.clear();
+        PowerUp powerUp = new PowerUp(p,new PVector(p.width/2,0),50,50, "Jesos" );
+        powerUpList.add(null);
+        powerUpList.add(powerUp);
+        player = new PlayerShip(p,new PVector(p.width/2,p.height/2),50,50);
+        spawnerManger = new spawnerManger(p, enemyList, powerUpList,player);
+        spawnerManger.spawnEnemy();
     }
 
     void draw(){

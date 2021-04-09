@@ -31,8 +31,15 @@ public class ScoreBoard extends Menu{
             calBestScore();
             calBest = false;
         }
+        p.textSize(16);
+        Table s = playScreen.scorebord;
+
+        String header = s.getString(0,0)+ " | " + s.getString(0,1) + " | " + s.getString(0,2);
+        p.text(header,400,180);
         for(int i = 0; i<score.length;++i){
             System.out.println(score[i]);
+            String info = score[i];
+            p.text(info,400,200+16*i+10);
         }
 
 
@@ -53,7 +60,7 @@ public class ScoreBoard extends Menu{
         for(int i = 0; i<score.length;++i){
 
             if (i < bestScores.size()){
-                String info = bestScores.get(i).name+ " " + bestScores.get(i).score + " " + bestScores.get(i).date;
+                String info = bestScores.get(i).name+ " | " + bestScores.get(i).score + " | " + bestScores.get(i).date;
                 score[i] = info;
             }
         }
