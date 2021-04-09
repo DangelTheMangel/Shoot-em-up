@@ -1,13 +1,22 @@
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import javafx.scene.input.KeyCode;
 import processing.core.PApplet;
 import processing.core.PVector;
+import processing.data.Table;
+import sun.util.resources.LocaleData;
 
 import java.security.Key;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class PlayScreen {
     PApplet p;
-    Boolean visibale = true;
+    boolean newGame = false;
+    Table scorebord;
+    Boolean visibale = false;
     PlayerShip player;
     spawnerManger spawnerManger;
 
@@ -16,7 +25,14 @@ public class PlayScreen {
 
     PlayScreen(PApplet p){
         this.p = p;
-        PowerUp powerUp = new PowerUp(p,new PVector(p.width/2,0),50,50, "burstMode" );
+        this.scorebord = scorebord;
+
+
+
+
+        //p.saveTable(scorebord,"Shoot-em-up/src/main/java/resources/scorebord.csv");
+
+        PowerUp powerUp = new PowerUp(p,new PVector(p.width/2,0),50,50, "Jesos" );
         powerUpList.add(null);
         powerUpList.add(powerUp);
         player = new PlayerShip(p,new PVector(p.width/2,p.height/2),50,50);
@@ -27,6 +43,7 @@ public class PlayScreen {
 
     void draw(){
         p.clear();
+
         for(int i = 0; i<enemyList.size();++i ){
             BasicEnemyEntity enemy = (BasicEnemyEntity) enemyList.get(i);
             enemy.display();

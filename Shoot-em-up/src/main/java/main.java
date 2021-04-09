@@ -1,5 +1,6 @@
 import processing.core.PApplet;
 import processing.core.PVector;
+import processing.data.Table;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,7 @@ public class main extends PApplet {
     public static MainMenu mainMenu;
     public static ScoreBoard scoreBoardMenu;
     SettingsMenu settingsMenu;
+    Table scoreBord;
 
 
     @Override
@@ -24,8 +26,9 @@ public class main extends PApplet {
     @Override
     public void setup() {
         frameRate(60);
-        playScreen = new PlayScreen(this);
-        tutorialScreen = new tutorialScreen(this);
+        scoreBord =loadTable("scorebord.csv");
+        playScreen = new PlayScreen(this,scoreBord);
+        tutorialScreen = new tutorialScreen(this,scoreBord);
         settingsMenu = new SettingsMenu(this);
         scoreBoardMenu = new ScoreBoard(this,playScreen);
         mainMenu = new MainMenu(this,playScreen);
@@ -37,17 +40,25 @@ public class main extends PApplet {
         background(200);
         if(playScreen.visibale){
             if(playScreen.player.dead){
-                playScreen = new PlayScreen(this);
+                playScreen.newGame = true;
+
+                playScreen.saveScooreBord();
+                playScreen.newGame();
+                mainMenu.visibale = true;
             }
             playScreen.draw();
         }
 
         if(tutorialScreen.visibale){
             if(tutorialScreen.player.dead){
-                tutorialScreen = new tutorialScreen(this);
+                tutorialScreen.saveScooreBord();
+                tutorialScreen = new tutorialScreen(this,scoreBord);
+                mainMenu.tutorialScreen = tutorialScreen;
+                mainMenu.visibale = true;
             }
             tutorialScreen.draw();
         }
+
         mainMenu.display();
         settingsMenu.display();
         scoreBoardMenu.display();

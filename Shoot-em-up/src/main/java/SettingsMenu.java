@@ -15,7 +15,6 @@ public class SettingsMenu extends Menu {
         });
 
         btnList.add(btnBack);
-
     }
 
     @Override
