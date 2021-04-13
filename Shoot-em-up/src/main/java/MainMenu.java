@@ -20,6 +20,7 @@ public class MainMenu extends Menu{
             @Override
             public void execute() {
                 visibale = false;
+                playScreen.size = size;
                 playScreen.visibale =true;
             }
         });
@@ -31,6 +32,7 @@ public class MainMenu extends Menu{
             @Override
             public void execute() {
                 visibale = false;
+                tutorialScreen.size = size;
                 tutorialScreen.visibale =true;
             }
         });
@@ -42,6 +44,7 @@ public class MainMenu extends Menu{
             @Override
             public void execute() {
                 visibale = false;
+                main.scoreBoardMenu.reSizeMenu(size);
                 main.scoreBoardMenu.calBest = true;
                 main.scoreBoardMenu.visibale = true;
             }

@@ -14,6 +14,7 @@ import java.util.Calendar;
 
 public class PlayScreen {
     PApplet p;
+    float size = 1;
     boolean newGame = false;
     Table scorebord;
     Boolean visibale = false;

@@ -17,6 +17,7 @@ public class ScoreBoard extends Menu{
             @Override
             public void execute() {
                 visibale = false;
+
                 main.mainMenu.visibale = true;
             }
         });
@@ -31,7 +32,7 @@ public class ScoreBoard extends Menu{
             calBestScore();
             calBest = false;
         }
-        p.textSize(16);
+        p.textSize(16*size);
         Table s = playScreen.scorebord;
 
         String header = s.getString(0,0)+ " | " + s.getString(0,1) + " | " + s.getString(0,2);
@@ -39,7 +40,7 @@ public class ScoreBoard extends Menu{
         for(int i = 0; i<score.length;++i){
             System.out.println(score[i]);
             String info = score[i];
-            p.text(info,400,200+16*i+10);
+            p.text(info,400 *size,(200+16*i+10)*size);
         }
 
 

@@ -20,7 +20,7 @@ public class main extends PApplet {
 
     @Override
     public void settings() {
-        size(1000,1000);
+        size(800,900);
 
     }
 
@@ -47,6 +47,7 @@ public class main extends PApplet {
                 playScreen.saveScooreBord();
 
                 playScreen.newGame();
+                endScreenMenu.reSizeMenu(playScreen.size);
                 endScreenMenu.calBest = true;
                 endScreenMenu.visibale = true;
             }
