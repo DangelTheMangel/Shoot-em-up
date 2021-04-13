@@ -16,7 +16,7 @@ public class PlayerShip extends Entity {
     float powerUpTimer = -1;
     boolean stopPowerUp = false;
     int score = 0;
-    int life = 100;
+    int life = 1;
 
     ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
 
