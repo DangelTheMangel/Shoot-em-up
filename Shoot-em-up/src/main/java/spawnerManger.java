@@ -19,7 +19,7 @@ public class spawnerManger {
     ArrayList<Entity> enemyList;
     ArrayList<PowerUp> powerUpList ;
     PlayerShip player;
-    PowerUp powerUp ;
+    PowerUp powerUp;
     int spawnRate ;
     spawnerManger(PApplet p, ArrayList<Entity> enemyList, ArrayList<PowerUp> powerUpList,PlayerShip player){
         this.p = p;
