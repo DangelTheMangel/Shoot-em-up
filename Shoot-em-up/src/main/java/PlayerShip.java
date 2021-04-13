@@ -51,9 +51,12 @@ public class PlayerShip extends Entity {
         }
         powerUpTimer-=1;
         if(powerUpTimer<0){
-            stopPowerUp = true;
+            slutBurst = 0;
+            endTimer = 20;
+
             powerUpTimer = -1;
         }
+
         p.println(powerUpTimer);
         if(life<=0 & ankhed){
             life=1;
