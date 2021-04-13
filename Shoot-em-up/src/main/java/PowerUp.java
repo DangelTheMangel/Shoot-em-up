@@ -63,7 +63,7 @@ public class PowerUp extends Entity {
 
         //yanderedev kode men det gør ikke noget
         if(this.name.equals("SlowBullets")){
-            
+
             player.endTimer = 40;
             player.powerUpTimer=200;
         } else if(this.name.equals("SlowMo")){
