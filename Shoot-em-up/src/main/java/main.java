@@ -9,8 +9,9 @@ public class main extends PApplet {
         PApplet.main("main");
     }
 
-    PlayScreen playScreen;
+    public static PlayScreen playScreen;
     tutorialScreen tutorialScreen;
+    EndScreenMenu endScreenMenu;
     public static MainMenu mainMenu;
     public static ScoreBoard scoreBoardMenu;
     SettingsMenu settingsMenu;
@@ -31,7 +32,8 @@ public class main extends PApplet {
         tutorialScreen = new tutorialScreen(this,scoreBord);
         settingsMenu = new SettingsMenu(this);
         scoreBoardMenu = new ScoreBoard(this,playScreen);
-        mainMenu = new MainMenu(this,playScreen);
+        endScreenMenu = new EndScreenMenu(this,playScreen);
+        mainMenu = new MainMenu(this,playScreen,settingsMenu,tutorialScreen);
     }
 
     @Override
@@ -43,8 +45,10 @@ public class main extends PApplet {
                 playScreen.newGame = true;
 
                 playScreen.saveScooreBord();
+
                 playScreen.newGame();
-                mainMenu.visibale = true;
+                endScreenMenu.calBest = true;
+                endScreenMenu.visibale = true;
             }
             playScreen.draw();
         }
@@ -62,6 +66,7 @@ public class main extends PApplet {
         mainMenu.display();
         settingsMenu.display();
         scoreBoardMenu.display();
+        endScreenMenu.display();
     }
 
     @Override
@@ -81,5 +86,6 @@ public class main extends PApplet {
         mainMenu.mousePressed(mouseX,mouseY);
         settingsMenu.mousePressed(mouseX,mouseY);
         scoreBoardMenu.mousePressed(mouseX,mouseY);
+        endScreenMenu.mousePressed(mouseX,mouseY);
     }
 }
