@@ -36,9 +36,11 @@ public class SettingsMenu extends Menu {
                     screenHeight = getJFrame(p.getSurface()).getY();
                     p.frame.setLocation(0, 0);
                     p.frame.setSize(p.displayWidth/2, p.displayHeight);
+                    displayResolution[displayResolution.length-1].z = (p.displayWidth/2)/displayResolution[displayResolution.length-2].x;
                 } else {
                     p.frame.setLocation(screenWidth, screenHeight);
                     p.frame.setSize((int) displayResolution[displayResolutionInt].x, (int) displayResolution[displayResolutionInt].y);
+
                 }
 
                 size = displayResolution[displayResolutionInt].z;
@@ -67,6 +69,7 @@ public class SettingsMenu extends Menu {
                     screenHeight = getJFrame(p.getSurface()).getY();
                     p.frame.setLocation(0, 0);
                     p.frame.setSize(p.displayWidth/2, p.displayHeight);
+                    displayResolution[displayResolution.length-1].z = (p.displayWidth/2)/displayResolution[displayResolution.length-2].x;
                 } else {
                     p.frame.setLocation(screenWidth, screenHeight);
                     p.frame.setSize((int) displayResolution[displayResolutionInt].x, (int) displayResolution[displayResolutionInt].y);
