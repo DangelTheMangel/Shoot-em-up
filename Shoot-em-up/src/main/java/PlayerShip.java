@@ -3,6 +3,7 @@ import processing.core.PVector;
 
 import java.util.ArrayList;
 
+
 import static processing.core.PConstants.*;
 import static processing.core.PConstants.LEFT;
 
@@ -12,15 +13,23 @@ public class PlayerShip extends Entity {
     boolean ready = true;
     boolean actionPressed = false;
     boolean dead = false;
+    float powerUpTimer = -1;
+    boolean stopPowerUp = false;
     int score = 0;
-    int life = 100;
+    int life = 1;
 
     ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
 
     //spam
     boolean ankhed = false;
     float bulletSpeed;
-
+    float timer;
+    //når timeren starter forfra
+    float endTimer = 20;
+    //man må kun ændre på slutburst hvis slutburst er det samme som startburst skyder den en bullet af gangen, jo større forskel jo flere bullets bliver der skudt af gangen.
+    float startBurst =0;
+    float slutBurst = 0;
+    //
     PlayerShip(PApplet p, PVector position, int playerWidth, int playerWidth2) {
         super(p, position, playerWidth, playerWidth2);
 
@@ -36,6 +45,19 @@ public class PlayerShip extends Entity {
 
 
     void display(){
+        timer+=1;
+        if(timer >endTimer){
+            timer = 0;
+        }
+        powerUpTimer-=1;
+        if(powerUpTimer<0){
+            slutBurst = 0;
+            endTimer = 20;
+
+            powerUpTimer = -1;
+        }
+
+        p.println(powerUpTimer);
         if(life<=0 & ankhed){
             life=1;
             ankhed=false;
@@ -75,8 +97,9 @@ public class PlayerShip extends Entity {
     }
 
     void shoot(){
-        if(actionPressed){
-
+        if(actionPressed&& timer>=startBurst && timer<=slutBurst ){
+            Bullet bulletClass = new Bullet(p,new PVector(0,-4),new PVector(position.x,position.y),10,10);
+            BulletList.add(bulletClass);
         }
 
     }
@@ -89,8 +112,7 @@ public class PlayerShip extends Entity {
                 case 'f':{
                     if((pressed) && (ready)) {
                         actionPressed = true;
-                        Bullet bulletClass = new Bullet(p,new PVector(0,-4),new PVector(position.x,position.y),10,10);
-                        BulletList.add(bulletClass);
+
 
                     }else{
                         actionPressed = false;
@@ -162,6 +184,16 @@ public class PlayerShip extends Entity {
                         left=false;}
 
 
+                }break;
+                case 32:{
+                    if((pressed) && (ready)) {
+                        actionPressed = true;
+                        Bullet bulletClass = new Bullet(p,new PVector(0,-4),new PVector(position.x,position.y),10,10);
+                        BulletList.add(bulletClass);
+
+                    }else{
+                        actionPressed = false;
+                    }
                 }break;
 
             }

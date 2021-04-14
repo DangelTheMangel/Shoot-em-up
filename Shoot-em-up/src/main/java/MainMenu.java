@@ -4,19 +4,23 @@ public class MainMenu extends Menu{
     PlayScreen playScreen;
     tutorialScreen tutorialScreen;
     SettingsMenu settingsMenu;
-    MainMenu(PApplet p,PlayScreen playScreen,SettingsMenu settingsMenu, tutorialScreen tutorialScreen) {
+
+
+
+    public MainMenu(main p, PlayScreen playScreen, SettingsMenu settingsMenu, tutorialScreen tutorialScreen) {
         super(p);
         this.playScreen = playScreen;
         this.tutorialScreen = tutorialScreen;
         this.settingsMenu = settingsMenu;
 
-        visibale = true;
+
 
         Button btnPlay = new Button(200,200,200,50,"Play",p);
         btnPlay.addAction(new Action() {
             @Override
             public void execute() {
                 visibale = false;
+                playScreen.size = size;
                 playScreen.visibale =true;
             }
         });
@@ -28,6 +32,7 @@ public class MainMenu extends Menu{
             @Override
             public void execute() {
                 visibale = false;
+                tutorialScreen.size = size;
                 tutorialScreen.visibale =true;
             }
         });
@@ -39,6 +44,8 @@ public class MainMenu extends Menu{
             @Override
             public void execute() {
                 visibale = false;
+                main.scoreBoardMenu.reSizeMenu(size);
+                main.scoreBoardMenu.calBest = true;
                 main.scoreBoardMenu.visibale = true;
             }
         });
@@ -66,6 +73,7 @@ public class MainMenu extends Menu{
         });
 
         btnList.add(btnExit);
+        visibale = true;
 
     }
 

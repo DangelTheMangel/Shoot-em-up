@@ -6,7 +6,8 @@ public class Button {
     PApplet p;
 
     //dette er variablerne for x,y postionerne samt knappens høje og brede
-    float x,y,w,h;
+    float x,y,w,h,size = 1;
+    float rX,rY,rW,rh;
     // denne string indholder hvad der skal stå på knappen
     String text;
     //dette er den instieret interface som indholder funktionen
@@ -19,11 +20,12 @@ public class Button {
 
         //her siger jeg at tingene fra construkteren er det samme som det i klassen
         this.p = p;
-        this.x = x;
-        this.y = y;
-        this.h = h;
-        this.w = w;
+        rX = x;
+        rY = y;
+        rh = h;
+        rW = w;
         this.text = text;
+        reSize();
     }
 
     void addAction(Action a){
@@ -65,6 +67,15 @@ public class Button {
             a.execute();
 
         }
+    }
+
+    void  reSize(){
+        x = rX *size;
+        y = rY *size ;
+        w = rW *size;
+        h = rh *size;
+
+        System.out.println(this +"\nx: " + x + " y: " + y + " w: " + w + " h: " + h);
     }
 
 

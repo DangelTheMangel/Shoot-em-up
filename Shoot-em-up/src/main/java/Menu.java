@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public abstract class Menu {
     PApplet p;
     Boolean visibale = false ;
+    public float size = 1;
     //listen med alle knapperne
 
     ArrayList<Button> btnList = new ArrayList<>();
@@ -45,5 +46,14 @@ public abstract class Menu {
         if(visibale){
 
         }
+    }
+
+    void reSizeMenu(float s){
+        for(int i = 0; i <btnList.size();++i){
+            btnList.get(i).size = s;
+            btnList.get(i).reSize();
+        }
+
+
     }
 }

@@ -11,13 +11,15 @@ public class spawnerManger {
             "SlowBullets", "SlowBullets","SlowBullets",
             "SlowMo", "SlowMo","SlowMo",
             "Ankh",
-            "Jesos"
+            "Jesos",
+            "fastBullets","fastBullets",
+            "burstMode",
     };
 
     ArrayList<Entity> enemyList;
     ArrayList<PowerUp> powerUpList ;
     PlayerShip player;
-    PowerUp powerUp ;
+    PowerUp powerUp;
     int spawnRate ;
     spawnerManger(PApplet p, ArrayList<Entity> enemyList, ArrayList<PowerUp> powerUpList,PlayerShip player){
         this.p = p;
@@ -48,7 +50,7 @@ public class spawnerManger {
     }
 
     void spawnPowerUp(){
-        System.out.println("\n spawnrate " + (p.frameCount% spawnRate));
+        //System.out.println("\n spawnrate " + (p.frameCount% spawnRate));
         if(p.frameCount% spawnRate==0){
             String s = powerUpTypes[(int) p.random(0,powerUpTypes.length)];
             PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),-10);
