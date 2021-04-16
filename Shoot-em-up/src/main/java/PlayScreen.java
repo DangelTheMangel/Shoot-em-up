@@ -1,9 +1,10 @@
 import com.mysql.cj.x.protobuf.MysqlxCrud;
-import javafx.scene.input.KeyCode;
+
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 import processing.data.Table;
-import sun.util.resources.LocaleData;
+
 
 import java.security.Key;
 import java.time.LocalDate;
@@ -20,6 +21,8 @@ public class PlayScreen {
     Boolean visibale = false;
     PlayerShip player;
     spawnerManger spawnerManger;
+
+    public ArrayList<PImage> sprites = new ArrayList<>();
 
     ArrayList<PowerUp> powerUpList = new ArrayList<PowerUp>();
     ArrayList<Entity> enemyList = new ArrayList<Entity>();

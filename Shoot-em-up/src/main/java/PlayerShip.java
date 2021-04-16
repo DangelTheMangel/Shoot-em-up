@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class PlayerShip extends Entity {
     boolean stopPowerUp = false;
     int score = 0;
     int life = 1;
-
+    PImage sprite, bullet;
     ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
 
     //spam
@@ -32,7 +33,8 @@ public class PlayerShip extends Entity {
     //
     PlayerShip(PApplet p, PVector position, int playerWidth, int playerWidth2) {
         super(p, position, playerWidth, playerWidth2);
-
+        sprite = p.loadImage("Sprite/playerShip.png");
+        bullet = p.loadImage("Sprite/Bullet.png");
     }
 
 
@@ -57,7 +59,7 @@ public class PlayerShip extends Entity {
             powerUpTimer = -1;
         }
 
-        p.println(powerUpTimer);
+
         if(life<=0 & ankhed){
             life=1;
             ankhed=false;
@@ -70,7 +72,10 @@ public class PlayerShip extends Entity {
 
         }else {
             changePosition();
-            p.rect(position.x, position.y, playerWidth, playerHeight);
+
+
+            //p.rect(position.x, position.y, playerWidth, playerHeight);
+            p.image(sprite,position.x, position.y, playerWidth, playerHeight);
             changePosition();
 
             for (int i = 0; i < BulletList.size(); ++i) {
@@ -98,7 +103,8 @@ public class PlayerShip extends Entity {
 
     void shoot(){
         if(actionPressed&& timer>=startBurst && timer<=slutBurst ){
-            Bullet bulletClass = new Bullet(p,new PVector(0,-4),new PVector(position.x,position.y),10,10);
+            Bullet bulletClass = new Bullet(p,new PVector(0,-4),new PVector(position.x,position.y),32,32);
+            bulletClass.sprite = bullet;
             BulletList.add(bulletClass);
         }
 
