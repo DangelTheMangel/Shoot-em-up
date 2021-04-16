@@ -18,7 +18,7 @@ public class PlayerShip extends Entity {
     boolean stopPowerUp = false;
     int score = 0;
     int life = 1;
-
+    boolean moveKeyPressed,actionKeyPressed = false;
     ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
     PImage[] sprite;
     int spriteInt  = 0;
@@ -122,7 +122,7 @@ public class PlayerShip extends Entity {
                 case 'f':{
                     if((pressed) && (ready)) {
                         actionPressed = true;
-
+                        actionKeyPressed = true;
 
                     }else{
                         actionPressed = false;
@@ -130,8 +130,10 @@ public class PlayerShip extends Entity {
                 }break;
 
                 case 's': {
-                    if((pressed) &&(ready))
-                        down=true;
+                    if((pressed) &&(ready)) {
+                        down = true;
+                        moveKeyPressed = true;
+                    }
                     else{
                         down=false;}
 
@@ -139,6 +141,7 @@ public class PlayerShip extends Entity {
 
                 case 'w': {
                     if((pressed) &&(ready)) {
+                        moveKeyPressed = true;
                         up = true;
 
                     }
@@ -149,7 +152,7 @@ public class PlayerShip extends Entity {
                 case 'a': {
                     if((pressed) &&(ready)){
                         left=true;
-
+                        moveKeyPressed = true;
                     }
                     else
                         left=false;
@@ -158,7 +161,7 @@ public class PlayerShip extends Entity {
                 case 'd': {
                     if((pressed) &&(ready)){
                         right=true;
-
+                        moveKeyPressed = true;
                     }
                     else
                         right=false;
@@ -171,31 +174,39 @@ public class PlayerShip extends Entity {
             switch (keyCode){
 
                 case DOWN: {
-                    if((pressed) &&(ready))
-                        down=true;
+                    if((pressed) &&(ready)) {
+                        down = true;
+                        moveKeyPressed = true;
+                    }
                     else{
                         down=false;}
 
                 }break;
 
                 case UP: {
-                    if((pressed) &&(ready))
-                        up=true;
+                    if((pressed) &&(ready)) {
+                        up = true;
+                        moveKeyPressed = true;
+                    }
                     else{
                         up=false;}
 
                 }break;
                 case RIGHT: {
-                    if((pressed) &&(ready))
+                    if((pressed) &&(ready)){
                         right=true;
+                        moveKeyPressed = true;
+                    }
                     else{
                         right=false;}
 
 
                 }break;
                 case LEFT: {
-                    if((pressed) &&(ready))
+                    if((pressed) &&(ready)){
                         left=true;
+                        moveKeyPressed = true;
+                    }
                     else{
                         left=false;}
 
@@ -206,6 +217,7 @@ public class PlayerShip extends Entity {
                         actionPressed = true;
                         Bullet bulletClass = new Bullet(p,new PVector(0,-4),new PVector(position.x,position.y),10,10);
                         BulletList.add(bulletClass);
+                        actionKeyPressed = true;
 
                     }else{
                         actionPressed = false;

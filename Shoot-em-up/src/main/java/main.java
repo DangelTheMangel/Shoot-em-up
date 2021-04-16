@@ -55,6 +55,7 @@ public class main extends PApplet {
         }
 
         if(tutorialScreen.visibale){
+
             if(tutorialScreen.player.dead){
                 tutorialScreen.saveScooreBord();
                 tutorialScreen = new tutorialScreen(this,scoreBord);
@@ -62,6 +63,7 @@ public class main extends PApplet {
                 mainMenu.visibale = true;
             }
             tutorialScreen.draw();
+            tutorialScreen.tutorialText();
         }
 
         mainMenu.display();

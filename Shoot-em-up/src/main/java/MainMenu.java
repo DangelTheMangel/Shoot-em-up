@@ -34,6 +34,7 @@ public class MainMenu extends Menu{
                 visibale = false;
                 tutorialScreen.size = size;
                 tutorialScreen.visibale =true;
+
             }
         });
 
