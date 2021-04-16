@@ -18,9 +18,10 @@ public class PlayerShip extends Entity {
     boolean stopPowerUp = false;
     int score = 0;
     int life = 1;
-    PImage sprite, bullet;
-    ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
 
+    ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
+    PImage[] sprite;
+    int spriteInt  = 0;
     //spam
     boolean ankhed = false;
     float bulletSpeed;
@@ -33,8 +34,11 @@ public class PlayerShip extends Entity {
     //
     PlayerShip(PApplet p, PVector position, int playerWidth, int playerWidth2) {
         super(p, position, playerWidth, playerWidth2);
-        sprite = p.loadImage("Sprite/playerShip.png");
-        bullet = p.loadImage("Sprite/Bullet.png");
+        PImage rightSprite = p.loadImage("Sprite/RairPlane.png");
+        PImage leftSprite = p.loadImage("Sprite/LairPlane.png");
+        PImage nomalSprite = p.loadImage("Sprite/airPlane.png");
+        PImage bullet = p.loadImage("Sprite/Bullet.png");
+        sprite = new PImage[]{nomalSprite, leftSprite, rightSprite, bullet};
     }
 
 
@@ -75,7 +79,7 @@ public class PlayerShip extends Entity {
 
 
             //p.rect(position.x, position.y, playerWidth, playerHeight);
-            p.image(sprite,position.x, position.y, playerWidth, playerHeight);
+            p.image(sprite[spriteInt],position.x, position.y, playerWidth, playerHeight);
             changePosition();
 
             for (int i = 0; i < BulletList.size(); ++i) {
@@ -104,7 +108,7 @@ public class PlayerShip extends Entity {
     void shoot(){
         if(actionPressed&& timer>=startBurst && timer<=slutBurst ){
             Bullet bulletClass = new Bullet(p,new PVector(0,-4),new PVector(position.x,position.y),32,32);
-            bulletClass.sprite = bullet;
+            bulletClass.sprite = sprite[sprite.length-1];
             BulletList.add(bulletClass);
         }
 
@@ -134,22 +138,28 @@ public class PlayerShip extends Entity {
                 }break;
 
                 case 'w': {
-                    if((pressed) &&(ready))
+                    if((pressed) &&(ready)) {
                         up = true;
+
+                    }
                     else
                         up=false;
 
                 }break;
                 case 'a': {
-                    if((pressed) &&(ready))
+                    if((pressed) &&(ready)){
                         left=true;
+
+                    }
                     else
                         left=false;
 
                 }break;
                 case 'd': {
-                    if((pressed) &&(ready))
+                    if((pressed) &&(ready)){
                         right=true;
+
+                    }
                     else
                         right=false;
 
@@ -205,6 +215,14 @@ public class PlayerShip extends Entity {
             }
 
 
+        }
+
+        if(left){
+            spriteInt = 1;
+        }else  if(right){
+            spriteInt = 2;
+        }else if(up||down){
+            spriteInt = 0;
         }
         velocity.set(((right)?2:0) +((left)?-2:0),(((up)?-2:0) +((down)?2:0)));
     }
