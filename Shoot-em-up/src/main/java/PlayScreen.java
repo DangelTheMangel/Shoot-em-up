@@ -105,7 +105,10 @@ public class PlayScreen {
             enemy.display();
             enemy.move();
             enemy.anythingRelatedToThePlayer(player);
-            enemy.collisionWithPlayer(player);
+            if(enemy.collisionWithPlayer(player)){
+                enemyList.remove(i);
+                i--;
+            }
             enemy.collisionWithBullets(player);
 
             player.collisionWithBullets(enemy.BulletList);

@@ -19,7 +19,7 @@ public class PlayerShip extends Entity {
     PImage sky;
     int skyBoxInt = 0;
     int score = 0;
-    int life = 1;
+    int life = 100;
     boolean moveKeyPressed,actionKeyPressed = false;
     ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
     PImage[] sprite;

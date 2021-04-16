@@ -39,7 +39,7 @@ public class spawnerManger {
                 if(Math.random() < 0.7) {
                     float timer = p.random(0,500);
                     PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),i*10);
-                    enemyList.add(new BasicEnemyEntity(p,pos, 50, 50, timer));
+                    enemyList.add(new KamikazeEnemy(p,pos, 50, 50, timer));
                 }else  if(Math.random() < 0.7) {
                     float timer = p.random(0,500);
                     PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),i*10);

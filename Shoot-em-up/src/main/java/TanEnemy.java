@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 
 public class TanEnemy extends BasicEnemyEntity {
@@ -7,6 +8,13 @@ public class TanEnemy extends BasicEnemyEntity {
     TanEnemy(PApplet p, PVector position, int xSize, int ySize, float timer) {
         super(p, position, xSize, ySize, timer);
         swing = (float) 0.09;
+    }
+
+    @Override
+    void loadedImage() {
+        PImage e = p.loadImage("Sprite/ballonEnemy.png");
+        sprites = new PImage[] {e};
+        spriteInt = 0;
     }
 
     void move() {

@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 
 import java.util.ArrayList;
@@ -8,6 +9,9 @@ public class BasicEnemyEntity extends Entity {
     int turn =(int) p.random(-10,10);
     float swing = p.random((float) 0.01,(float) 0.09);
     boolean dead = false;
+    boolean shouldBeDestoryded = false;
+    PImage[] sprites;
+    int spriteInt;
     float timer;
     ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
     BasicEnemyEntity(PApplet p, PVector position, int xSize, int ySize, float timer) {
@@ -17,16 +21,28 @@ public class BasicEnemyEntity extends Entity {
 
     }
 
-    @Override
-    void display() {
-        p.ellipse(position.x,position.y,playerWidth,playerHeight);
+    void loadedImage(){
+       PImage e = p.loadImage("Sprite/Enemy.png") ;
+       PImage le = p.loadImage("Sprite/LEnemy.png") ;
+       PImage re = p.loadImage("Sprite/REnemy.png") ;
+       sprites = new PImage[]{e,le,re};
 
     }
 
-void anythingRelatedToThePlayer(PlayerShip s){
+    @Override
+    void display() {
+        if(sprites == null){
+            p.ellipse(position.x,position.y,playerWidth,playerHeight);
+            loadedImage();
+        }else {
+            p.image(sprites[spriteInt],position.x,position.y,playerWidth,playerHeight);
+        }
 
 
-}
+    }
+
+    void anythingRelatedToThePlayer(PlayerShip s){ }
+
     @Override
     void move() {
         timer = timer +1;
@@ -35,6 +51,11 @@ void anythingRelatedToThePlayer(PlayerShip s){
             timer = 0;
         }
         int sin = (int) (10*p.sin((float) (turn * swing)));
+        if(sin<0){
+            spriteInt = 1;
+        } else if(sin>0){
+            spriteInt = 2;
+        }
         turn ++;
         position.x += sin/2;
         position.y += 0.5;
@@ -63,11 +84,15 @@ void anythingRelatedToThePlayer(PlayerShip s){
         }
     }
 
-    void collisionWithPlayer(PlayerShip s) {
+    boolean collisionWithPlayer(PlayerShip s) {
+        boolean col = false;
         if (collision(s.position.x, s.position.y, s.playerWidth, s.playerHeight, position.x, position.y, playerWidth, playerHeight)) {
             s.position.y += 20;
             s.life = s.life-1;
+            if(shouldBeDestoryded)
+            col = true;
         }
+        return col;
     }
 
 
