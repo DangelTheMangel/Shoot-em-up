@@ -27,8 +27,8 @@ float angle;
             diffX = s.position.x -position.x;
             diffY = s.position.y - position.y;
             angle = (float) Math.atan2(diffY, diffX);
-            velocity.x = (float) (1 * Math.cos(angle));
-            velocity.y = (float) (1 * Math.sin(angle));
+            velocity.x = (float) (4 * Math.cos(angle));
+            velocity.y = (float) (4 * Math.sin(angle));
             position.add(velocity);
 
     }

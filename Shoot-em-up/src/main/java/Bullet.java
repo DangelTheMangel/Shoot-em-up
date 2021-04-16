@@ -6,6 +6,7 @@ public class Bullet extends Entity{
 
     PImage sprite;
     PVector speed;
+    boolean dead = false;
     Bullet(PApplet p, PVector speed, PVector position, int xSize, int ySize) {
         super(p, position, xSize, ySize);
         this.speed = speed;

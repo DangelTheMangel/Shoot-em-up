@@ -86,6 +86,9 @@ public class PlayerShip extends Entity {
                 Bullet bulletClass = BulletList.get(i);
                 bulletClass.draw();
                 bulletClass.move();
+                if(bulletClass.dead){
+                    BulletList.remove(i);
+                }
 
             }
 
@@ -244,6 +247,7 @@ public class PlayerShip extends Entity {
             Bullet b = e.get(i);
             if (collision(position.x, position.y, playerWidth, playerHeight, b.position.x, b.position.y, b.playerWidth, b.playerHeight)) {
                 life--;
+                dead = true;
 
             }
         }

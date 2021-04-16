@@ -78,7 +78,7 @@ void anythingRelatedToThePlayer(PlayerShip s){
             if (collision(position.x, position.y, playerWidth, playerHeight, b.position.x, b.position.y, b.playerWidth, b.playerHeight)) {
                 dead = true;
                 playerShip.score ++;
-
+                b.dead = true;
             }
             }
         }
