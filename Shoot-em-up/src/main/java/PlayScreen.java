@@ -76,6 +76,8 @@ public class PlayScreen {
 
     void draw(){
         p.clear();
+        p.background(0, 145, 255);
+
 
         for(int i = 0; i<enemyList.size();++i ){
             BasicEnemyEntity enemy = (BasicEnemyEntity) enemyList.get(i);
