@@ -20,9 +20,13 @@ public class BasicEnemyEntity extends Entity {
     @Override
     void display() {
         p.ellipse(position.x,position.y,playerWidth,playerHeight);
-        move();
+
     }
 
+void anythingRelatedToThePlayer(PlayerShip s){
+       
+
+}
     @Override
     void move() {
         timer = timer +1;

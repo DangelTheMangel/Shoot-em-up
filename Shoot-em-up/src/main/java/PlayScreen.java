@@ -83,6 +83,7 @@ public class PlayScreen {
             BasicEnemyEntity enemy = (BasicEnemyEntity) enemyList.get(i);
             enemy.display();
             enemy.move();
+            enemy.anythingRelatedToThePlayer(player);
             enemy.collisionWithPlayer(player);
             enemy.collisionWithBullets(player);
             player.collisionWithBullets(enemy.BulletList);
