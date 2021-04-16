@@ -6,7 +6,7 @@ public class SettingsMenu extends Menu {
     int displayResolutionInt = 1;
     int lastDisplayResolutionInt = 1;
     int screenWidth, screenHeight;
-    PVector[] displayResolution = {new PVector(320, 360, 0.4f), new PVector(640, 720, 0.8f), new PVector(800, 900, 1f), new PVector(960, 1080, 1.2f)};
+    PVector[] displayResolution = {new PVector(320, 360, 0.4f), new PVector(800, 900, 1f), new PVector(960, 1080, 1.2f)};
     SettingsMenu(PApplet p) {
         super(p);
         Button btnBack = new Button(100,400,200,50,"Back",p);
@@ -37,12 +37,14 @@ public class SettingsMenu extends Menu {
                     p.frame.setLocation(0, 0);
                     p.frame.setSize(p.displayWidth/2, p.displayHeight);
                     displayResolution[displayResolution.length-1].z = (p.displayWidth/2)/displayResolution[displayResolution.length-2].x;
+                    main.playScreen.sky = p.loadImage("sky.png");
                 } else {
+                    main.playScreen.sky = p.loadImage("lowResSky.png");
                     p.frame.setLocation(screenWidth, screenHeight);
                     p.frame.setSize((int) displayResolution[displayResolutionInt].x, (int) displayResolution[displayResolutionInt].y);
 
                 }
-
+//lowResSky.png
                 size = displayResolution[displayResolutionInt].z;
 
                 // RestSettings();
@@ -69,8 +71,10 @@ public class SettingsMenu extends Menu {
                     screenHeight = getJFrame(p.getSurface()).getY();
                     p.frame.setLocation(0, 0);
                     p.frame.setSize(p.displayWidth/2, p.displayHeight);
+                    main.playScreen.sky = p.loadImage("sky.png");
                     displayResolution[displayResolution.length-1].z = (p.displayWidth/2)/displayResolution[displayResolution.length-2].x;
                 } else {
+                    main.playScreen.sky = p.loadImage("lowResSky.png");
                     p.frame.setLocation(screenWidth, screenHeight);
                     p.frame.setSize((int) displayResolution[displayResolutionInt].x, (int) displayResolution[displayResolutionInt].y);
                 }

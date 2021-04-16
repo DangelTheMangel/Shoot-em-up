@@ -16,6 +16,8 @@ public class PlayerShip extends Entity {
     boolean dead = false;
     float powerUpTimer = -1;
     boolean stopPowerUp = false;
+    PImage sky;
+    int skyBoxInt = 0;
     int score = 0;
     int life = 1;
     boolean moveKeyPressed,actionKeyPressed = false;
@@ -38,7 +40,9 @@ public class PlayerShip extends Entity {
         PImage leftSprite = p.loadImage("Sprite/LairPlane.png");
         PImage nomalSprite = p.loadImage("Sprite/airPlane.png");
         PImage bullet = p.loadImage("Sprite/Bullet.png");
+
         sprite = new PImage[]{nomalSprite, leftSprite, rightSprite, bullet};
+
     }
 
 
