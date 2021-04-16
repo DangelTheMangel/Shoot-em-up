@@ -86,6 +86,7 @@ public class PlayScreen {
             enemy.anythingRelatedToThePlayer(player);
             enemy.collisionWithPlayer(player);
             enemy.collisionWithBullets(player);
+
             player.collisionWithBullets(enemy.BulletList);
             if(enemy.dead){
                 enemyList.remove(i);

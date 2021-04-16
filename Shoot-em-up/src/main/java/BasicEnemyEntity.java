@@ -24,7 +24,7 @@ public class BasicEnemyEntity extends Entity {
     }
 
 void anythingRelatedToThePlayer(PlayerShip s){
-       
+
 
 }
     @Override
