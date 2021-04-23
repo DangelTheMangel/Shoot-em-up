@@ -25,7 +25,8 @@ public class BasicEnemyEntity extends Entity {
        PImage e = p.loadImage("Sprite/Enemy.png") ;
        PImage le = p.loadImage("Sprite/LEnemy.png") ;
        PImage re = p.loadImage("Sprite/REnemy.png") ;
-       sprites = new PImage[]{e,le,re};
+       PImage bullet = p.loadImage("Sprite/EBullet.png") ;
+       sprites = new PImage[]{e,le,re,bullet};
 
     }
 
@@ -80,6 +81,7 @@ public class BasicEnemyEntity extends Entity {
         }
         if(timer == 60) {
             Bullet bulletClass = new Bullet(p, new PVector(0, 2), new PVector(position.x, position.y), 10, 10);
+            bulletClass.sprite = sprites[sprites.length-1];
             BulletList.add(bulletClass);
         }
     }

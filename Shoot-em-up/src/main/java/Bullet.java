@@ -23,8 +23,10 @@ public class Bullet extends Entity{
     void draw() {
         if(sprite == null){
             p.rect(position.x,position.y,playerWidth,playerHeight);
+
         }else {
-           p.image(sprite,position.x,position.y,playerWidth,playerHeight);
+            p.image(sprite,position.x-playerWidth/2,position.y-playerHeight/2,playerWidth*2,playerHeight*2);
+
         }
 
     }
