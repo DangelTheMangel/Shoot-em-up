@@ -2,25 +2,16 @@ import processing.core.PApplet;
 import processing.core.PVector;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class spawnerManger {
     PApplet p;
     boolean start = true;
     float startTime = 0,roundHealthStart = 0, lastEnemyCount = 0, roundEnemyCount = 51;
-    String[] powerUpTypes = {
-            "HealthPickup", "HealthPickup", "HealthPickup", "HealthPickup", "HealthPickup", "HealthPickup",
-            "SlowBullets", "SlowBullets","SlowBullets",
-            "SlowMo", "SlowMo","SlowMo",
-            "Ankh",
-            "Jesos",
-            "fastBullets","fastBullets",
-            "burstMode",
-    };
-    List<String> objects = Arrays.asList("Jesos","two","three");
-    List<Double> chance = Arrays.asList(0.25, 0.25, 0.5);
+
+    List<String> objects = Arrays.asList("Jesos","SlowBullets","SlowMo","HealthPickup","Ankh","burstMode","fastBullets");
+    List<Double> chance = Arrays.asList(0.05, 0.25, 0.20,0.50,0.30,0.10,0.40);
+    TreeMap<Double, String> map = new TreeMap<>();
     //https://stackoverflow.com/questions/41965243/choose-an-object-randomly-with-different-probability
     ArrayList<Entity> enemyList;
     ArrayList<PowerUp> powerUpList ;
@@ -33,6 +24,10 @@ public class spawnerManger {
         this.powerUpList = powerUpList;
         spawnRate = (int) p.random(2000,6000);
         this.player = player;
+        double total = 0.0d;
+        for (int i = 0; i < objects.size(); i++) {
+            map.put(total += chance.get(i), objects.get(i));
+        }
     }
 
 
@@ -105,11 +100,16 @@ public class spawnerManger {
     void spawnPowerUp(){
 
         if(p.frameCount% spawnRate==0){
-            String s = powerUpTypes[(int) p.random(0,powerUpTypes.length)];
+
+
+            Random generator = new Random();
+            double value = generator.nextDouble();
+            String object = map.ceilingEntry(value).getValue();
             PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),-10);
-            PowerUp powerUp = new PowerUp(p,pos,50,50, s );
+            PowerUp powerUp = new PowerUp(p,pos,50,50, object );
             powerUpList.add(powerUp);
             spawnRate = (int) p.random(2000,6000);
+
         }
     }
 }
