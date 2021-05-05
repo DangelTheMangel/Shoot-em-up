@@ -1,14 +1,32 @@
+import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PSurface;
 import processing.core.PVector;
+import processing.data.Table;
+
+import javax.swing.*;
 
 public class SettingsMenu extends Menu {
     int displayResolutionInt = 1;
     int lastDisplayResolutionInt = 1;
     int screenWidth, screenHeight;
+    String username;
+    UserInfoPanel infoPanel;
     PVector[] displayResolution = {new PVector(320, 360, 0.4f), new PVector(800, 900, 1f), new PVector(960, 1080, 1.2f)};
     SettingsMenu(PApplet p) {
         super(p);
+        Button btnInfo = new Button(100,300,200,50,"edit name",p);
+        btnInfo.addAction(new Action() {
+            @Override
+            public void execute() {
+                infoPanel = new UserInfoPanel();
+                username = infoPanel.name;
+
+            }
+        });
+        btnList.add(btnInfo);
+
         Button btnBack = new Button(100,400,200,50,"Back",p);
         btnBack.addAction(new Action() {
             @Override
@@ -91,6 +109,22 @@ public class SettingsMenu extends Menu {
         });
         btnList.add(resRightBtn);
 
+        checkIfName();
+    }
+
+    void checkIfName(){
+       Table s =  main.playScreen.scorebord;
+
+       if(s.getString(s.getRowCount()-1,0) == null || s.getString(s.getRowCount()-1,0).equalsIgnoreCase("")){
+           infoPanel = new UserInfoPanel();
+           username = infoPanel.name;
+           System.out.println("username: " + s.getString(s.getRowCount()-1,0));
+       }else{
+           username = s.getString(s.getRowCount()-1,0);
+           System.out.println("username : " + s.getString(s.getRowCount()-1,0));
+
+       }
+
 
     }
 
@@ -100,6 +134,9 @@ public class SettingsMenu extends Menu {
         String displayInfo = p.width + " X " + p.height;
         p.text(displayInfo,
                 (450 - p.textWidth(displayInfo) / 2) * size, (230) * size);
+
+
+
     }
 
     @Override

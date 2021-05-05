@@ -70,7 +70,7 @@ public class PlayScreen {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String date = dtf.format(now);
-        String name = "AlbertGaming";
+        String name = main.mainMenu.settingsMenu.username;
         String score = String.valueOf(player.score);
 
         int rowC = scorebord.getRowCount();
