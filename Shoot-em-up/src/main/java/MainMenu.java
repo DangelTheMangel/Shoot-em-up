@@ -1,9 +1,15 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class MainMenu extends Menu{
     PlayScreen playScreen;
     tutorialScreen tutorialScreen;
     SettingsMenu settingsMenu;
+    PImage airPlane;
+    int skyBoxInt = 0;
+    PImage sky;
+
+    float swing = p.random((float) 0.01,(float) 0.09);
 
 
 
@@ -75,11 +81,31 @@ public class MainMenu extends Menu{
 
         btnList.add(btnExit);
         visibale = true;
+        airPlane = p.loadImage("brum.png");
+        sky = p.loadImage("lowResSky.png");
+    }
+    void skyOverlay(int i) {
 
+        p.image(sky, 0, skyBoxInt, p.width, p.height * 2);
+        p.image(sky, 0, -p.height * 2 + skyBoxInt, p.width, p.height * 2);
+        skyBoxInt += i;
+
+        if (skyBoxInt > p.height*2 ) {
+            skyBoxInt = 0;
+        }
     }
 
     @Override
     void draw() {
+        p.background(3, 211, 252);
+
+
+
+        int xSin = (int) (10*p.sin((float) (p.frameCount * swing)));
+        int ySin = (int) (20*p.sin((float) (p.frameCount * swing*2)));
+
+        p.image(airPlane,xSin,ySin,p.width,p.height);
+        skyOverlay(1);
 
     }
 
