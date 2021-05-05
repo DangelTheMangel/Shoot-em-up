@@ -1,10 +1,11 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 
 public class Button {
     //denne variable indholder pde bibloteket
     PApplet p;
-
+    PImage imageButton;
     //dette er variablerne for x,y postionerne samt knappens høje og brede
     float x,y,w,h,size = 1;
     float rX,rY,rW,rh;
@@ -27,7 +28,9 @@ public class Button {
         this.text = text;
         reSize();
     }
-
+    void addImage(PImage photo){
+        imageButton = photo;
+    }
     void addAction(Action a){
         //her overwriter jeg funktionen med den givet funktion
         this.a = a;
@@ -36,14 +39,19 @@ public class Button {
     void  display(){
 
         p.textAlign(p.CENTER);
+        if(imageButton != null){
+            p.image(imageButton , x,y,w,h);
+        }else {
+            //her tegner jeg firekanten af knappen
+            p.fill(btnColor.x,btnColor.y,btnColor.z);
+            p.rect(x,y,w,h);
 
-        //her tegner jeg firekanten af knappen
-        p.fill(btnColor.x,btnColor.y,btnColor.z);
-        p.rect(x,y,w,h);
+        }
 
         //her tegner jeg texten som står på knappen
         p.fill(textColor.x,textColor.y,textColor.z);
         p.text(text,x + w/8 +p.textWidth(text)/2,y+h/2);
+
     }
 
     //dette er så du kan ændre farverne det var ikke en del af opgaven men synes det var vigigt

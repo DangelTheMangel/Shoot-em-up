@@ -18,7 +18,8 @@ public class MainMenu extends Menu{
         this.playScreen = playScreen;
         this.tutorialScreen = tutorialScreen;
         this.settingsMenu = settingsMenu;
-
+        airPlane = p.loadImage("brum.png");
+        sky = p.loadImage("lowResSky.png");
 
 
         Button btnPlay = new Button(200,200,200,50,"Play",p);
@@ -30,6 +31,7 @@ public class MainMenu extends Menu{
                 playScreen.visibale =true;
             }
         });
+
 
         btnList.add(btnPlay);
 
@@ -81,8 +83,8 @@ public class MainMenu extends Menu{
 
         btnList.add(btnExit);
         visibale = true;
-        airPlane = p.loadImage("brum.png");
-        sky = p.loadImage("lowResSky.png");
+        addImageToAllBtn(airPlane);
+
     }
     void skyOverlay(int i) {
 
