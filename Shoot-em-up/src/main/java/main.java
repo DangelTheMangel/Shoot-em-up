@@ -1,8 +1,5 @@
 import processing.core.PApplet;
-import processing.core.PVector;
 import processing.data.Table;
-
-import java.util.ArrayList;
 
 public class main extends PApplet {
     public static void main(String[] args) {
@@ -27,7 +24,8 @@ public class main extends PApplet {
     @Override
     public void setup() {
         frameRate(60);
-        scoreBord =loadTable("scorebord.csv");
+        scoreBord =loadTable("Shoot-em-up/Score/scorebord.csv");
+        //scoreBord =loadTable("scorebord.csv");
         playScreen = new PlayScreen(this,scoreBord);
         tutorialScreen = new tutorialScreen(this,scoreBord);
         settingsMenu = new SettingsMenu(this);

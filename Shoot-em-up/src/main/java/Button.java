@@ -82,8 +82,6 @@ public class Button {
         y = rY *size ;
         w = rW *size;
         h = rh *size;
-
-        System.out.println(this +"\nx: " + x + " y: " + y + " w: " + w + " h: " + h);
     }
 
 

@@ -38,7 +38,7 @@ public class ScoreBoard extends Menu{
         String header = s.getString(0,0)+ " | " + s.getString(0,1) + " | " + s.getString(0,2);
         p.text(header,400,180);
         for(int i = 0; i<score.length;++i){
-            System.out.println(score[i]);
+
             String info = score[i];
             p.text(info,400 *size,(200+16*i+10)*size);
         }
@@ -73,13 +73,15 @@ public class ScoreBoard extends Menu{
     ArrayList<score> scoreBubbleSort(ArrayList<score> bestScores) {
         boolean sorted = false;
         int temp;
+        score score;
         while(!sorted) {
             sorted = true;
             for (int i = 0; i < bestScores.size() - 1; i++) {
                 if ( bestScores.get(i).score> bestScores.get(i+1).score) {
                     temp = bestScores.get(i).score;
-                    bestScores.get(i).score = bestScores.get(i+1).score;
-                    bestScores.get(i+1).score = temp;
+                    score = bestScores.get(i);
+                    bestScores.set(i,bestScores.get(i+1));
+                    bestScores.set(i+1,score);
                     sorted = false;
                 }
             }

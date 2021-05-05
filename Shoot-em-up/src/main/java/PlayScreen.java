@@ -77,9 +77,14 @@ public class PlayScreen {
         scorebord.setString(rowC, 0, name);
         scorebord.setString(rowC, 1, score);
         scorebord.setString(rowC, 2, date);
+        System.out.println(scorebord.getString(rowC, 0) +"-"+scorebord.getString(rowC, 1));
+        /*
+        /src/main/java/resources/scorebord.csv
+        */
 
-        boolean success = p.saveTable(scorebord, "/src/main/java/resources/scorebord.csv");
-        System.out.println("done: " + success);
+        boolean success = p.saveTable(scorebord, "Shoot-em-up/Score/scorebord.csv");
+
+        System.out.println("done: " + success + " wait 10 sec");
     }
 
     void newGame() {
