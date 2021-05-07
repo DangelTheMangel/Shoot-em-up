@@ -18,7 +18,13 @@ public class MainMenu extends Menu{
         this.playScreen = playScreen;
         this.tutorialScreen = tutorialScreen;
         this.settingsMenu = settingsMenu;
-        airPlane = p.loadImage("brum.png");
+        if(Math.random() > 0.49){
+            airPlane = p.loadImage("brum.png");
+            System.out.println("!");
+        }else{
+            airPlane = p.loadImage("brum2.png");
+        }
+
         sky = p.loadImage("lowResSky.png");
 
 
@@ -29,6 +35,7 @@ public class MainMenu extends Menu{
                 visibale = false;
                 playScreen.size = size;
                 playScreen.visibale =true;
+                playScreen.reSizeGame(size);
             }
         });
 
@@ -42,6 +49,7 @@ public class MainMenu extends Menu{
                 visibale = false;
                 tutorialScreen.size = size;
                 tutorialScreen.visibale =true;
+                tutorialScreen.reSizeGame(size);
 
             }
         });

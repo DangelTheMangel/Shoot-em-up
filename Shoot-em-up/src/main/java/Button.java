@@ -27,6 +27,7 @@ public class Button {
         rY = y;
         rh = h;
         rW = w;
+
         this.text = text;
         reSize();
     }

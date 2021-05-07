@@ -17,6 +17,7 @@ public class PlayScreen {
     Boolean visibale = false;
     PlayerShip player;
     spawnerManger spawnerManger;
+    HealthBar healthBar ;
 
     public ArrayList<PImage> sprites = new ArrayList<>();
 
@@ -35,6 +36,7 @@ public class PlayScreen {
         player = new PlayerShip(p, new PVector(p.width / 2, p.height / 2), 50, 50);
         spawnerManger = new spawnerManger(p, enemyList, powerUpList, player);
         spawnerManger.spawnEnemy();
+        healthBar = new HealthBar(p,p.width/2 -200, 25, 400 , 40,player);
 
     }
 
@@ -53,18 +55,6 @@ public class PlayScreen {
         }
     }
 
-    void setGradient(int x, int y, float w, float h, int c1, int c2) {
-
-        p.noFill();
-
-        for (int i = y; i <= y + h; i++) {
-            float inter = p.map(i, y, y + h, 0, 1);
-            int c = p.lerpColor(c1, c2, inter);
-            p.stroke(c);
-            p.line(x, i, x + w, i);
-        }
-
-    }
 
     void saveScooreBord() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -140,8 +130,19 @@ public class PlayScreen {
                 }
             }
         }
+
+        healthBar.tegnHealthBar();
     }
 
+    void reSizeGame(float s){
+        size = s;
+        healthBar.reSizeHealthBar(s);
+        player.reSizeEntity(s);
+        for(int i = 0 ; i<spawnerManger.enemyList.size();++i){
+            spawnerManger.enemyList.get(i).reSizeEntity(s);
+            //husk at lave inden i spawnmanger så den også ændre størrelse der.
+        }
+    }
 
     void keyPressed(char key, int keyCode) {
         player.controls(key, keyCode, true);

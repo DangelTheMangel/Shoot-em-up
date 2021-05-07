@@ -80,7 +80,7 @@ public class BasicEnemyEntity extends Entity {
             bulletClass.move();
         }
         if(timer == 60) {
-            Bullet bulletClass = new Bullet(p, new PVector(0, 2), new PVector(position.x, position.y), 10, 10);
+            Bullet bulletClass = new Bullet(p, new PVector(0, 2), new PVector(position.x, position.y), playerWidth/5, playerWidth/5);
             bulletClass.sprite = sprites[sprites.length-1];
             BulletList.add(bulletClass);
         }

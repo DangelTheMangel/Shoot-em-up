@@ -19,7 +19,7 @@ public class PlayerShip extends Entity {
     PImage sky;
     int skyBoxInt = 0;
     int score = 0;
-    int life = 1;
+    int life = 2;
     boolean moveKeyPressed,actionKeyPressed = false;
     ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
     PImage[] sprite;
@@ -114,7 +114,7 @@ public class PlayerShip extends Entity {
 
     void shoot(){
         if(actionPressed&& timer>=startBurst && timer<=slutBurst ){
-            Bullet bulletClass = new Bullet(p,new PVector(0,-4),new PVector(position.x+playerWidth/2-5,position.y+5),10,10);
+            Bullet bulletClass = new Bullet(p,new PVector(0,-4),new PVector(position.x+playerWidth/2-5,position.y+5),playerWidth/5,playerWidth/5);
             bulletClass.sprite = sprite[sprite.length-1];
             BulletList.add(bulletClass);
         }
