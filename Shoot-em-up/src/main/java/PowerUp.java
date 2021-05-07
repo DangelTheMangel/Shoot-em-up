@@ -54,6 +54,7 @@ public class PowerUp extends Entity {
     boolean collsionWithPlayer(PlayerShip player){
         if(collision(position.x, position.y, playerWidth, playerHeight, player.position.x, player.position.y, player.playerWidth, player.playerHeight)){
             issuePowerUp(player);
+            player.powerupUsed = name;
             return true;
         } else{
             return false;
@@ -73,11 +74,15 @@ public class PowerUp extends Entity {
             slowmotimer=75; //Det her svarer til 5 sek slowmo.
         } else if(this.name.equals("HealthPickup")){
             player.life++;
+            updateTimer(player);
+
         } else if(this.name.equals("Ankh")){
             player.ankhed = true;
         } else if(this.name.equals("Jesos")){
             player.BulletList.clear();
             player.position.y -= p.height;
+            updateTimer(player);
+
         }
         else if(this.name.equals("burstMode")){
             player.slutBurst = 5;
@@ -89,6 +94,12 @@ public class PowerUp extends Entity {
 
 
         }
+
+    }
+
+    void updateTimer(PlayerShip player){
+        player.timer = 0;
+        player.endTimer = 400;
 
     }
 }

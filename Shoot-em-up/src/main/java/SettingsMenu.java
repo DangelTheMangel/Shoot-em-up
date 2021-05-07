@@ -199,7 +199,7 @@ public class SettingsMenu extends Menu {
 
 
     }
-
+    boolean beck = false;
     @Override
     void draw() {
         p.background(3, 211, 252);
@@ -208,7 +208,11 @@ public class SettingsMenu extends Menu {
         String displayInfo = p.width + " X " + p.height;
         p.text(displayInfo,
                 (450 - p.textWidth(displayInfo) / 2) * size, (230) * size);
-
+        if(username.equalsIgnoreCase("beck") && !beck){
+            beck = true;
+            main.soundManager.bgmusic.stop();
+            main.soundManager.loopMusic(main.soundManager.musicFiles.get(main.soundManager.musicFiles.size()-1));
+        }
 
 
     }

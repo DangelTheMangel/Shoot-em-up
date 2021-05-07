@@ -91,6 +91,7 @@ public class BasicEnemyEntity extends Entity {
         if (collision(s.position.x, s.position.y, s.playerWidth, s.playerHeight, position.x, position.y, playerWidth, playerHeight)) {
             s.position.y += 20;
             s.life = s.life-1;
+            main.soundManager.playSFX(main.soundManager.sfxFiles.get(2));
             if(shouldBeDestoryded)
             col = true;
         }
@@ -104,6 +105,7 @@ public class BasicEnemyEntity extends Entity {
                 Bullet b = e.get(i);
             if (collision(position.x, position.y, playerWidth, playerHeight, b.position.x, b.position.y, b.playerWidth, b.playerHeight)) {
                 dead = true;
+                main.soundManager.playSFX(main.soundManager.explotionSXFiles.get((int) p.random(0,main.soundManager.explotionSXFiles.size())));
                 playerShip.score ++;
                 b.dead = true;
             }

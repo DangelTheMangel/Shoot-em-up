@@ -65,6 +65,7 @@ public abstract class Menu {
     }
 
     void reSizeMenu(float s){
+        size = s;
         for(int i = 0; i <btnList.size();++i){
             btnList.get(i).size = s;
             btnList.get(i).reSize();

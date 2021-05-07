@@ -5,7 +5,7 @@ public class main extends PApplet {
     public static void main(String[] args) {
         PApplet.main("main");
     }
-
+    public static SoundManager soundManager;
     public static PlayScreen playScreen;
     tutorialScreen tutorialScreen;
     EndScreenMenu endScreenMenu;
@@ -32,6 +32,7 @@ public class main extends PApplet {
         scoreBoardMenu = new ScoreBoard(this,playScreen);
         endScreenMenu = new EndScreenMenu(this,playScreen);
         mainMenu = new MainMenu(this,playScreen,settingsMenu,tutorialScreen);
+        soundManager = new SoundManager();
     }
 
     @Override

@@ -16,10 +16,11 @@ public class PlayerShip extends Entity {
     boolean dead = false;
     float powerUpTimer = -1;
     boolean stopPowerUp = false;
+    String powerupUsed = "999";
     PImage sky;
     int skyBoxInt = 0;
     int score = 0;
-    int life = 2;
+    int life = 100;
     boolean moveKeyPressed,actionKeyPressed = false;
     ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
     PImage[] sprite;
@@ -58,13 +59,16 @@ public class PlayerShip extends Entity {
         timer+=1;
         if(timer >endTimer){
             timer = 0;
+            powerupUsed = "";
         }
+
         powerUpTimer-=1;
         if(powerUpTimer<0){
             slutBurst = 0;
             endTimer = 20;
 
             powerUpTimer = -1;
+
         }
 
 
@@ -114,6 +118,7 @@ public class PlayerShip extends Entity {
 
     void shoot(){
         if(actionPressed&& timer>=startBurst && timer<=slutBurst ){
+            main.soundManager.playSFX(main.soundManager.shootingSFXFiles.get((int) p.random(0,main.soundManager.shootingSFXFiles.size())));
             Bullet bulletClass = new Bullet(p,new PVector(0,-4),new PVector(position.x+playerWidth/2-5,position.y+5),playerWidth/5,playerWidth/5);
             bulletClass.sprite = sprite[sprite.length-1];
             BulletList.add(bulletClass);
@@ -250,6 +255,7 @@ public class PlayerShip extends Entity {
             Bullet b = e.get(i);
             if (collision(position.x, position.y, playerWidth, playerHeight, b.position.x, b.position.y, b.playerWidth, b.playerHeight)) {
                 life--;
+                main.soundManager.playSFX(main.soundManager.sfxFiles.get(1));
                 dead = true;
 
             }

@@ -75,7 +75,7 @@ public class Button {
                 mouseX < x + w &&
                 mouseY > y &&
                 mouseY < y + h) {
-
+            main.soundManager.playSFX(main.soundManager.sfxFiles.get(0));
             //her siger jeg at den skal gøre funktionen inden i action som vi oven over har omskrivet til det vi ønsker
             a.execute();
 

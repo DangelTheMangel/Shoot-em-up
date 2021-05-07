@@ -19,6 +19,7 @@ public class PlayScreen {
     spawnerManger spawnerManger;
     HealthBar healthBar ;
 
+
     public ArrayList<PImage> sprites = new ArrayList<>();
 
     ArrayList<PowerUp> powerUpList = new ArrayList<PowerUp>();
@@ -88,6 +89,7 @@ public class PlayScreen {
         player = new PlayerShip(p, new PVector(p.width / 2, p.height / 2), 50, 50);
         spawnerManger = new spawnerManger(p, enemyList, powerUpList, player);
         spawnerManger.spawnEnemy();
+        healthBar.player = player;
     }
 
     void draw() {
@@ -113,7 +115,7 @@ public class PlayScreen {
             }
 
         }
-        p.text("HP: " + player.life + "\nSCORE:\n" + player.score, 100, p.height - 200);
+
         player.display();
         player.shoot();
         spawnerManger.spawnEnemy();
@@ -131,7 +133,7 @@ public class PlayScreen {
             }
         }
 
-        healthBar.tegnHealthBar();
+        healthBar.drawHealthBar();
     }
 
     void reSizeGame(float s){
