@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 
 import java.lang.reflect.Array;
@@ -14,21 +15,29 @@ public class spawnerManger {
     List<String> objects = Arrays.asList("Jesos","SlowBullets","SlowMo","HealthPickup","Ankh","burstMode","fastBullets");
     List<Double> chance = Arrays.asList(0.05, 0.25, 0.20,0.50,0.30,0.10,0.40);
     TreeMap<Double, String> map = new TreeMap<>();
+    TreeMap<Double, PImage> picMap = new TreeMap<>();
     //https://stackoverflow.com/questions/41965243/choose-an-object-randomly-with-different-probability
     ArrayList<Entity> enemyList;
     ArrayList<PowerUp> powerUpList ;
+    ArrayList<PImage> sprite = new ArrayList<>() ;
     PlayerShip player;
     PowerUp powerUp;
     int spawnRate ;
     spawnerManger(PApplet p, ArrayList<Entity> enemyList, ArrayList<PowerUp> powerUpList,PlayerShip player){
         this.p = p;
+        for(int i = 0; i<7;++i){
+            sprite.add(p.loadImage("Sprite/PowerUps/p"+i+".png"));
+        }
         this.enemyList = enemyList;
         this.powerUpList = powerUpList;
         spawnRate = (int) p.random(2000,6000);
         this.player = player;
         double total = 0.0d;
+
         for (int i = 0; i < objects.size(); i++) {
             map.put(total += chance.get(i), objects.get(i));
+            picMap.put(total ,sprite.get(i));
+            System.out.println(total + " objekt: " + objects.get(i));
         }
     }
 
@@ -106,9 +115,14 @@ public class spawnerManger {
 
             Random generator = new Random();
             double value = generator.nextDouble();
+            //System.out.println("value: " + value + " obj: " + map.ceilingEntry(value).getValue());
+
+            PImage pic = picMap.ceilingEntry(value).getValue();
             String object = map.ceilingEntry(value).getValue();
+
             PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),-10);
             PowerUp powerUp = new PowerUp(p,pos,(int)rew,(int)rew, object );
+            powerUp.pic = pic;
             powerUpList.add(powerUp);
             spawnRate = (int) p.random(2000,6000);
 

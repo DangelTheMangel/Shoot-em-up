@@ -25,6 +25,8 @@ public class SoundManager {
             sfxFiles.add(file3);
             File file2 = new File("Shoot-em-up/Sounds/SFX/hurt2.wav");
             sfxFiles.add(file2);
+            File file4 = new File("Shoot-em-up/Sounds/SFX/powerUp.wav");
+            sfxFiles.add(file4);
         } catch (Exception e) {
             e.printStackTrace();
         }

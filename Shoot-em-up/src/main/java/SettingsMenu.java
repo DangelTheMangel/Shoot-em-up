@@ -212,6 +212,10 @@ public class SettingsMenu extends Menu {
             beck = true;
             main.soundManager.bgmusic.stop();
             main.soundManager.loopMusic(main.soundManager.musicFiles.get(main.soundManager.musicFiles.size()-1));
+        } else if(!username.equalsIgnoreCase("beck") && beck  ) {
+            main.soundManager.bgmusic.stop();
+            main.soundManager.loopMusic(main.soundManager.musicFiles.get(0));
+            beck = false;
         }
 
 

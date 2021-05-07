@@ -31,12 +31,14 @@ public class PlayScreen {
         sky = p.loadImage("lowResSky.png");
         //p.saveTable(scorebord,"Shoot-em-up/src/main/java/resources/scorebord.csv");
 
-        PowerUp powerUp = new PowerUp(p, new PVector(p.width / 2, 0), 50, 50, "Jesos");
+
         powerUpList.add(null);
-        powerUpList.add(powerUp);
+
         player = new PlayerShip(p, new PVector(p.width / 2, p.height / 2), 50, 50);
         spawnerManger = new spawnerManger(p, enemyList, powerUpList, player);
         spawnerManger.spawnEnemy();
+
+        spawnerManger.spawnPowerUp();
         healthBar = new HealthBar(p,p.width/2 -200, 25, 400 , 40,player);
 
     }
@@ -140,9 +142,9 @@ public class PlayScreen {
         size = s;
         healthBar.reSizeHealthBar(s);
         player.reSizeEntity(s);
+        spawnerManger.reSize(s);
         for(int i = 0 ; i<spawnerManger.enemyList.size();++i){
             spawnerManger.enemyList.get(i).reSizeEntity(s);
-            //husk at lave inden i spawnmanger så den også ændre størrelse der.
         }
     }
 

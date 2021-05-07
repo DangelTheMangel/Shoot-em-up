@@ -33,6 +33,8 @@ public class main extends PApplet {
         endScreenMenu = new EndScreenMenu(this,playScreen);
         mainMenu = new MainMenu(this,playScreen,settingsMenu,tutorialScreen);
         soundManager = new SoundManager();
+        mainMenu.visibale = true;
+        settingsMenu.visibale = false;
     }
 
     @Override

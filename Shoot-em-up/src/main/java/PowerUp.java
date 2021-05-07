@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 
 public class PowerUp extends Entity {
@@ -6,7 +7,7 @@ public class PowerUp extends Entity {
     boolean active;
 
     float slowmotimer = 0;
-
+    PImage pic = null;
 
     //en player
    // PlayerShip Pls = PlayScreen.player;
@@ -18,11 +19,17 @@ public class PowerUp extends Entity {
 
     @Override
     void display() {
-        p.fill(255,0,0);
+        if(pic == null){
+            p.fill(255,0,0);
 
-        p.ellipse(position.x,position.y,playerWidth,playerHeight);
-        p.fill(255);
-        p.text(name,position.x - p.textWidth(name)/2,position.y);
+            p.ellipse(position.x,position.y,playerWidth,playerHeight);
+            p.fill(255);
+            p.text(name,position.x - p.textWidth(name)/2,position.y);
+        }else {
+            p.image(pic,position.x,position.y,playerWidth,playerHeight);
+
+        }
+
 
         move();
     }
@@ -55,6 +62,7 @@ public class PowerUp extends Entity {
         if(collision(position.x, position.y, playerWidth, playerHeight, player.position.x, player.position.y, player.playerWidth, player.playerHeight)){
             issuePowerUp(player);
             player.powerupUsed = name;
+            main.soundManager.playSFX(main.soundManager.sfxFiles.get(3));
             return true;
         } else{
             return false;
@@ -76,11 +84,11 @@ public class PowerUp extends Entity {
             player.life++;
             updateTimer(player);
 
-        } else if(this.name.equals("Ankh")){
+        } else if(this.name.equals("")){
             player.ankhed = true;
         } else if(this.name.equals("Jesos")){
             player.BulletList.clear();
-            player.position.y -= p.height;
+            player.position = new PVector(p.random(0,p.width),p.random(0,p.height));
             updateTimer(player);
 
         }
