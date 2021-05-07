@@ -7,6 +7,8 @@ import java.util.*;
 public class spawnerManger {
     PApplet p;
     boolean start = true;
+    float rew = 50;
+    float enemyWidth = 50;
     float startTime = 0,roundHealthStart = 0, lastEnemyCount = 0, roundEnemyCount = 51;
 
     List<String> objects = Arrays.asList("Jesos","SlowBullets","SlowMo","HealthPickup","Ankh","burstMode","fastBullets");
@@ -53,15 +55,15 @@ public class spawnerManger {
                         if(Math.random() < 0.5) {
                             float timer = p.random(0,500);
                             PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),i*10);
-                            enemyList.add(new BasicEnemyEntity(p,pos, 50, 50, timer));
+                            enemyList.add(new BasicEnemyEntity(p,pos, (int)rew, (int)rew, timer));
                         }else  if(Math.random() < 0.7) {
                             float timer = p.random(0,500);
                             PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),i*10);
-                            enemyList.add(new TanEnemy(p,pos, 50, 50, timer));
+                            enemyList.add(new TanEnemy(p,pos, (int)rew, (int)rew, timer));
                         }else {
                             float timer = p.random(0,500);
                             PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),i*10);
-                            enemyList.add(new KamikazeEnemy(p,pos, 50, 50, timer));
+                            enemyList.add(new KamikazeEnemy(p,pos, (int)rew, (int)rew, timer));
 
                         }
                     }
@@ -76,15 +78,15 @@ public class spawnerManger {
                if(Math.random() < 0.7) {
                     float timer = p.random(0,500);
                     PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),i*10);
-                    enemyList.add(new BasicEnemyEntity(p,pos, 50, 50, timer));
+                    enemyList.add(new BasicEnemyEntity(p,pos, (int)rew, (int)rew, timer));
                 }else  if(Math.random() < 0.7) {
                     float timer = p.random(0,500);
                     PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),i*10);
-                    enemyList.add(new TanEnemy(p,pos, 50, 50, timer));
+                    enemyList.add(new TanEnemy(p,pos, (int)rew, (int)rew, timer));
                 }else {
                     float timer = p.random(0,500);
                     PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),i*10);
-                    enemyList.add(new KamikazeEnemy(p,pos, 50, 50, timer));
+                    enemyList.add(new KamikazeEnemy(p,pos, (int)rew, (int)rew, timer));
 
                 }
 
@@ -106,10 +108,14 @@ public class spawnerManger {
             double value = generator.nextDouble();
             String object = map.ceilingEntry(value).getValue();
             PVector pos =  new PVector(p.random(p.width / 4, p.width - p.width / 4),-10);
-            PowerUp powerUp = new PowerUp(p,pos,50,50, object );
+            PowerUp powerUp = new PowerUp(p,pos,(int)rew,(int)rew, object );
             powerUpList.add(powerUp);
             spawnRate = (int) p.random(2000,6000);
 
         }
+    }
+
+    void reSize(float s){
+        rew = s * enemyWidth;
     }
 }
