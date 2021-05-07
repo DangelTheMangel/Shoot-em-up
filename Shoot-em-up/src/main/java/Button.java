@@ -9,13 +9,15 @@ public class Button {
     //dette er variablerne for x,y postionerne samt knappens høje og brede
     float x,y,w,h,size = 1;
     float rX,rY,rW,rh;
+    float textSize = 16;
+    float realTextSize = 16;
     // denne string indholder hvad der skal stå på knappen
     String text;
     //dette er den instieret interface som indholder funktionen
     Action a;
     //dette er farvene
-    PVector textColor = new PVector(0,0,0);
-    PVector btnColor = new PVector(255,255,255);
+    PVector textColor = new PVector(255,255,255);
+    PVector btnColor = new PVector(0,0,0);
 
     Button(float x, float y,float w,float h,String text, PApplet p){
 
@@ -50,7 +52,9 @@ public class Button {
 
         //her tegner jeg texten som står på knappen
         p.fill(textColor.x,textColor.y,textColor.z);
-        p.text(text,x + w/8 +p.textWidth(text)/2,y+h/2);
+        p.textSize(textSize);
+
+        p.text(text,x+(w/2) ,y+h/2);
 
     }
 
@@ -82,6 +86,7 @@ public class Button {
         y = rY *size ;
         w = rW *size;
         h = rh *size;
+        textSize = realTextSize *size;
     }
 
 

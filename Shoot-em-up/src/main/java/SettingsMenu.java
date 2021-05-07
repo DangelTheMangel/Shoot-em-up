@@ -12,6 +12,7 @@ public class SettingsMenu extends Menu {
     int lastDisplayResolutionInt = 1;
     int screenWidth, screenHeight;
     String username;
+    PImage plane;
     UserInfoPanel infoPanel;
     PVector[] displayResolution = {new PVector(320, 360, 0.4f), new PVector(800, 900, 1f), new PVector(960, 1080, 1.2f)};
     SettingsMenu(PApplet p) {
@@ -108,8 +109,11 @@ public class SettingsMenu extends Menu {
             }
         });
         btnList.add(resRightBtn);
-
+        addImageToAllBtn(p.loadImage("btn.png"));
+        btnList.get(2).addImage(p.loadImage("smollBTN.png"));
+        btnList.get(3).addImage(p.loadImage("smollBTN.png"));
         checkIfName();
+        plane = p.loadImage("fl.png");
     }
 
     void checkIfName(){
@@ -130,7 +134,9 @@ public class SettingsMenu extends Menu {
 
     @Override
     void draw() {
-
+        p.background(3, 211, 252);
+        main.mainMenu.skyOverlay((int) p.random(0,3));
+        p.image(plane,0,0, p.width, p.height);
         String displayInfo = p.width + " X " + p.height;
         p.text(displayInfo,
                 (450 - p.textWidth(displayInfo) / 2) * size, (230) * size);

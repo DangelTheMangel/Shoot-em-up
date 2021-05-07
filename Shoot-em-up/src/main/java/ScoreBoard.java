@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.data.Table;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.Collections;
 public class ScoreBoard extends Menu{
     PlayScreen playScreen;
     boolean calBest = false;
+    PImage plane;
     String[] score = {"...","...","...","...","...", "..."};
     ScoreBoard(PApplet p, PlayScreen playScreen) {
         super(p);
@@ -23,11 +25,17 @@ public class ScoreBoard extends Menu{
         });
 
         btnList.add(btnBack);
+        addImageToAllBtn(p.loadImage("btn.png"));
+        plane = p.loadImage("fl.png");
+
     }
 
 
     @Override
     void draw() {
+        p.background(3, 211, 252);
+        main.mainMenu.skyOverlay((int) p.random(0,3));
+        p.image(plane,0,0, p.width, p.height);
         if(calBest){
             calBestScore();
             calBest = false;

@@ -83,7 +83,7 @@ public class MainMenu extends Menu{
 
         btnList.add(btnExit);
         visibale = true;
-        addImageToAllBtn(airPlane);
+        addImageToAllBtn(p.loadImage("btn.png"));
 
     }
     void skyOverlay(int i) {

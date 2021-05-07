@@ -12,7 +12,7 @@ public class EndScreenMenu extends ScoreBoard{
                 main.playScreen.visibale = true;
             }
         });
-
+        addImageToAllBtn(p.loadImage("btn.png"));
         btnList.add(btnBack);
 
     }
