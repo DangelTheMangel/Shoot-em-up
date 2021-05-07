@@ -87,6 +87,7 @@ public class MainMenu extends Menu{
             public void execute() {
                 p.exit();
             }
+
         });
 
         btnList.add(btnExit);

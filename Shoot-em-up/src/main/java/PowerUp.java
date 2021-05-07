@@ -59,6 +59,8 @@ public class PowerUp extends Entity {
             return false;
         }
     }
+
+
     void issuePowerUp(PlayerShip player) {
 
         //yanderedev kode men det gør ikke noget

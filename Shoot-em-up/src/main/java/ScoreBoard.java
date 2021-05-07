@@ -14,7 +14,7 @@ public class ScoreBoard extends Menu{
         super(p);
         this.playScreen = playScreen;
         visibale = false;
-        Button btnBack = new Button(p.width/2,p.height-200,200,50,"Back",p);
+        Button btnBack = new Button(p.width/2-100,p.height/2-100,200,50,"Back",p);
         btnBack.addAction(new Action() {
             @Override
             public void execute() {
@@ -44,11 +44,13 @@ public class ScoreBoard extends Menu{
         Table s = playScreen.scorebord;
 
         String header = s.getString(0,0)+ " | " + s.getString(0,1) + " | " + s.getString(0,2);
-        p.text(header,400,180);
+        p.fill(100);
+        p.text(header,p.width/2,p.height/5);
         for(int i = 0; i<score.length;++i){
 
             String info = score[i];
-            p.text(info,400 *size,(200+16*i+10)*size);
+            p.fill(100);
+            p.text(info,p.width/2,(200+16*i+10)*size);
         }
 
 

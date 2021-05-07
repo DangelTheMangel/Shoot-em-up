@@ -17,7 +17,7 @@ public class SettingsMenu extends Menu {
     PVector[] displayResolution = {new PVector(320, 360, 0.4f), new PVector(800, 900, 1f), new PVector(960, 1080, 1.2f)};
     SettingsMenu(PApplet p) {
         super(p);
-        Button btnInfo = new Button(100,300,200,50,"edit name",p);
+        Button btnInfo = new Button(p.width/2-100,300,200,50,"edit name",p);
         btnInfo.addAction(new Action() {
             @Override
             public void execute() {
@@ -28,7 +28,7 @@ public class SettingsMenu extends Menu {
         });
         btnList.add(btnInfo);
 
-        Button btnBack = new Button(100,400,200,50,"Back",p);
+        Button btnBack = new Button(p.width/2-100,400,200,50,"Back",p);
         btnBack.addAction(new Action() {
             @Override
             public void execute() {
@@ -40,7 +40,7 @@ public class SettingsMenu extends Menu {
         });
         btnList.add(btnBack);
 
-        Button resLeftBtn = new Button(200, 200, 50, 50,"<",p);
+        Button resLeftBtn = new Button(p.width/4, 200, 50, 50,"<",p);
         resLeftBtn.addAction(new Action() {
             @Override
             public void execute() {
@@ -75,7 +75,7 @@ public class SettingsMenu extends Menu {
         });
         btnList.add(resLeftBtn);
 
-        Button resRightBtn = new Button(650, 200, 50, 50,">",p);
+        Button resRightBtn = new Button((float) (p.width/1.4), 200, 50, 50,">",p);
         resRightBtn.addAction(new Action() {
             @Override
             public void execute() {
@@ -109,6 +109,74 @@ public class SettingsMenu extends Menu {
             }
         });
         btnList.add(resRightBtn);
+        Button musicLeftBtn = new Button(p.width/4, 100, 50, 50,"<",p);
+        musicLeftBtn.addAction(new Action() {
+            @Override
+            public void execute() {
+                lastDisplayResolutionInt = displayResolutionInt;
+                displayResolutionInt--;
+                if (displayResolutionInt < 0)
+                    displayResolutionInt = displayResolution.length - 1;
+
+                if (displayResolutionInt == displayResolution.length - 1) {
+
+                    screenWidth =  getJFrame(p.getSurface()).getX();
+                    screenHeight = getJFrame(p.getSurface()).getY();
+                    p.frame.setLocation(0, 0);
+                    p.frame.setSize(p.displayWidth/2, p.displayHeight);
+                    displayResolution[displayResolution.length-1].z = (p.displayWidth/2)/displayResolution[displayResolution.length-2].x;
+                    main.playScreen.sky = p.loadImage("sky.png");
+                } else {
+                    main.playScreen.sky = p.loadImage("lowResSky.png");
+                    p.frame.setLocation(screenWidth, screenHeight);
+                    p.frame.setSize((int) displayResolution[displayResolutionInt].x, (int) displayResolution[displayResolutionInt].y);
+
+                }
+//lowResSky.png
+                size = displayResolution[displayResolutionInt].z;
+
+                // RestSettings();
+                reSizeMenu(size);
+                System.out.println("size: " + size);
+                reSizeMenu(size);
+
+            }
+        });
+        btnList.add(musicLeftBtn);
+        Button musicRightBtn = new Button((float) (p.width/1.4), 100, 50, 50,">",p);
+        musicRightBtn.addAction(new Action() {
+            @Override
+            public void execute() {
+                lastDisplayResolutionInt = displayResolutionInt;
+                displayResolutionInt++;
+                if (displayResolutionInt == displayResolution.length)
+                    displayResolutionInt = 0;
+
+                if (displayResolutionInt == displayResolution.length - 1) {
+                    System.out.println(displayResolutionInt);
+                    screenWidth = getJFrame(p.getSurface()).getX();
+                    screenHeight = getJFrame(p.getSurface()).getY();
+                    p.frame.setLocation(0, 0);
+                    p.frame.setSize(p.displayWidth/2, p.displayHeight);
+                    main.playScreen.sky = p.loadImage("sky.png");
+                    displayResolution[displayResolution.length-1].z = (p.displayWidth/2)/displayResolution[displayResolution.length-2].x;
+                } else {
+                    main.playScreen.sky = p.loadImage("lowResSky.png");
+                    p.frame.setLocation(screenWidth, screenHeight);
+                    p.frame.setSize((int) displayResolution[displayResolutionInt].x, (int) displayResolution[displayResolutionInt].y);
+                }
+
+                size = displayResolution[displayResolutionInt].z;
+
+
+                // RestSettings();
+                reSizeMenu(size);
+                System.out.println("size: " + size);
+                reSizeMenu(size);
+
+            }
+        });
+        btnList.add(musicRightBtn);
         addImageToAllBtn(p.loadImage("btn.png"));
         btnList.get(2).addImage(p.loadImage("smollBTN.png"));
         btnList.get(3).addImage(p.loadImage("smollBTN.png"));
