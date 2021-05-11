@@ -17,14 +17,13 @@ public class PlayerShip extends Entity {
     float powerUpTimer = -1;
     boolean stopPowerUp = false;
     String powerupUsed = "999";
-    PImage sky;
-    int skyBoxInt = 0;
     int score = 0;
     int life = 100;
     boolean moveKeyPressed,actionKeyPressed = false;
     ArrayList<Bullet> BulletList = new ArrayList<Bullet>();
     PImage[] sprite;
     int spriteInt  = 0;
+    int speed = 2 ;
     //spam
     boolean ankhed = false;
     float bulletSpeed;
@@ -57,18 +56,22 @@ public class PlayerShip extends Entity {
 
     void display(){
         timer+=1;
+        System.out.println(powerUpTimer + " speed: " + speed);
         if(timer >endTimer){
             timer = 0;
-            powerupUsed = "";
+
+
         }
 
-        powerUpTimer-=1;
+
         if(powerUpTimer<0){
             slutBurst = 0;
             endTimer = 20;
 
-            powerUpTimer = -1;
-
+            speed = 2;
+            powerupUsed = "";
+        }else {
+            powerUpTimer -= 1;
         }
 
 
@@ -247,7 +250,7 @@ public class PlayerShip extends Entity {
         }else if(up||down){
             spriteInt = 0;
         }
-        velocity.set(((right)?2:0) +((left)?-2:0),(((up)?-2:0) +((down)?2:0)));
+        velocity.set(((right)?speed:0) +((left)?-speed:0),(((up)?-speed:0) +((down)?speed:0)));
     }
 
     void collisionWithBullets(ArrayList<Bullet> e){

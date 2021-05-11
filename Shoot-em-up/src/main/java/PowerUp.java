@@ -77,9 +77,9 @@ public class PowerUp extends Entity {
 
             player.endTimer = 40;
             player.powerUpTimer=200;
-        } else if(this.name.equals("SlowMo")){
-            p.frameRate = 15;
-            slowmotimer=75; //Det her svarer til 5 sek slowmo.
+        } else if(this.name.equals("Speed")){
+            player.speed += 2;
+            player.powerUpTimer = 2000;
         } else if(this.name.equals("HealthPickup")){
             player.life++;
             updateTimer(player);

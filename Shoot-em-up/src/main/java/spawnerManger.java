@@ -12,8 +12,8 @@ public class spawnerManger {
     float enemyWidth = 50;
     float startTime = 0,roundHealthStart = 0, lastEnemyCount = 0, roundEnemyCount = 51;
 
-    List<String> objects = Arrays.asList("Jesos","SlowBullets","SlowMo","HealthPickup","Ankh","burstMode","fastBullets");
-    List<Double> chance = Arrays.asList(0.05, 0.10, 0.20,0.50,0.30,0.10,0.40);
+    List<String> objects = Arrays.asList("Jesos","SlowBullets","Speed","HealthPickup","Ankh","burstMode","fastBullets");
+    List<Double> chance = Arrays.asList(0.05, 0.10, 0.20,0.20,0.20,0.15,0.10);
     TreeMap<Double, String> map = new TreeMap<>();
     TreeMap<Double, PImage> picMap = new TreeMap<>();
     //https://stackoverflow.com/questions/41965243/choose-an-object-randomly-with-different-probability
