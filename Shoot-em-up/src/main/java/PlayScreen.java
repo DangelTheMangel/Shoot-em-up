@@ -36,7 +36,7 @@ public class PlayScreen {
 
         player = new PlayerShip(p, new PVector(p.width / 2, p.height / 2), 50, 50);
         spawnerManger = new spawnerManger(p, enemyList, powerUpList, player);
-        spawnerManger.spawnEnemy();
+
 
         spawnerManger.spawnPowerUp();
         healthBar = new HealthBar(p,p.width/2 -200, 25, 400 , 40,player);

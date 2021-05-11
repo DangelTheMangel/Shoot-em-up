@@ -14,7 +14,9 @@ public class PlayerShip extends Entity {
     boolean ready = true;
     boolean actionPressed = false;
     boolean dead = false;
+    boolean attack = false;
     float powerUpTimer = -1;
+    int attackNumber = 0;
     boolean stopPowerUp = false;
     String powerupUsed = "999";
     int score = 0;
@@ -125,6 +127,9 @@ public class PlayerShip extends Entity {
             Bullet bulletClass = new Bullet(p,new PVector(0,-4),new PVector(position.x+playerWidth/2-5,position.y+5),playerWidth/5,playerWidth/5);
             bulletClass.sprite = sprite[sprite.length-1];
             BulletList.add(bulletClass);
+        }
+        if(actionKeyPressed){
+           attackNumber++;
         }
 
     }
