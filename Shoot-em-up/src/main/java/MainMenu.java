@@ -69,7 +69,7 @@ public class MainMenu extends Menu{
 
         btnList.add(btnScoreBord);
 
-        Button btnOptions = new Button(p.width/2-100,545,200,50,"Options",p);
+        Button btnOptions = new Button(p.width/2-100,545,200,50,"Settings",p);
         btnOptions.addAction(new Action() {
             @Override
             public void execute() {
