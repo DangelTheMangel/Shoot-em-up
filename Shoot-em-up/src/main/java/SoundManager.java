@@ -52,6 +52,14 @@ public class SoundManager {
         }
 
     }
+
+    void changeVolume(float volu,Clip c ){
+        FloatControl vol = (FloatControl) c.getControl(FloatControl.Type.MASTER_GAIN);
+        vol.setValue(volu);
+
+
+    }
+
     void loadMusic(){
         try {
             File file = new File("Shoot-em-up/Sounds/Music/bm.wav");
@@ -86,6 +94,7 @@ public class SoundManager {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
             sfx = AudioSystem.getClip();
             sfx.open(audioInputStream);
+            changeVolume(main.mainMenu.settingsMenu.volumes[main.mainMenu.settingsMenu.sfxVolInt].y,sfx);
             sfx.start();
 
 

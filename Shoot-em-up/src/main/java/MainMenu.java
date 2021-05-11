@@ -7,7 +7,7 @@ public class MainMenu extends Menu{
     SettingsMenu settingsMenu;
     PImage airPlane;
     int skyBoxInt = 0;
-    PImage sky;
+    PImage sky,title;
 
     float swing = p.random((float) 0.01,(float) 0.09);
 
@@ -24,11 +24,11 @@ public class MainMenu extends Menu{
         }else{
             airPlane = p.loadImage("brum2.png");
         }
-
+        title = p.loadImage("title.png");
         sky = p.loadImage("lowResSky.png");
 
 
-        Button btnPlay = new Button(200,200,200,50,"Play",p);
+        Button btnPlay = new Button(p.width/2-150,300,300,75,"Play",p);
         btnPlay.addAction(new Action() {
             @Override
             public void execute() {
@@ -42,7 +42,7 @@ public class MainMenu extends Menu{
 
         btnList.add(btnPlay);
 
-        Button btnTourtorial = new Button(200,260,200,50,"Tourtorial",p);
+        Button btnTourtorial = new Button(p.width/2-125,395,250,60,"Tourtorial",p);
         btnTourtorial.addAction(new Action() {
             @Override
             public void execute() {
@@ -56,7 +56,7 @@ public class MainMenu extends Menu{
 
         btnList.add(btnTourtorial);
 
-        Button btnScoreBord = new Button(200,320,200,50,"ScoreBord",p);
+        Button btnScoreBord = new Button(p.width/2-100,475,200,50,"ScoreBord",p);
         btnScoreBord.addAction(new Action() {
             @Override
             public void execute() {
@@ -69,7 +69,7 @@ public class MainMenu extends Menu{
 
         btnList.add(btnScoreBord);
 
-        Button btnOptions = new Button(200,380,200,50,"Options",p);
+        Button btnOptions = new Button(p.width/2-100,545,200,50,"Options",p);
         btnOptions.addAction(new Action() {
             @Override
             public void execute() {
@@ -81,7 +81,7 @@ public class MainMenu extends Menu{
 
         btnList.add(btnOptions);
 
-        Button btnExit = new Button(200,450,200,50,"Exit",p);
+        Button btnExit = new Button(p.width/2-100,625,200,50,"Exit",p);
         btnExit.addAction(new Action() {
             @Override
             public void execute() {
@@ -117,7 +117,7 @@ public class MainMenu extends Menu{
 
         p.image(airPlane,xSin,ySin,p.width,p.height);
         skyOverlay(1);
-
+        p.image(title,0+(p.width/1.5f)/4,50,p.width/1.5f,300/1.5f*size);
     }
 
     @Override
