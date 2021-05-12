@@ -23,6 +23,7 @@ public class spawnerManger {
     ArrayList<PowerUp> powerUpList ;
     ArrayList<PImage> sprite = new ArrayList<>() ;
     PlayerShip player;
+
     PowerUp powerUp;
     int spawnRate ;
     spawnerManger(PApplet p, ArrayList<Entity> enemyList, ArrayList<PowerUp> powerUpList,PlayerShip player){
@@ -172,6 +173,13 @@ if(tutorial ==true) {
     }
 
     void reSize(float s){
+        for(int i = 0; i < powerUpList.size();++i){
+            if(powerUpList.get(i) != null){
+                powerUpList.get(i).playerWidth = (int) rew;
+                powerUpList.get(i).playerHeight = (int) rew;
+            }
+        }
         rew = s * enemyWidth;
+
     }
 }
