@@ -257,6 +257,8 @@ public class SettingsMenu extends Menu {
         p.strokeWeight(1);
         p.textSize(textSize *2*size);
         p.text("Username: " + username, 380*size,635*size);
+        p.text("SFX: " , 250*size,180*size);
+        p.text("Music: " , 250*size,290*size);
     }
 
     @Override

@@ -73,30 +73,30 @@ public class PowerUp extends Entity {
     void issuePowerUp(PlayerShip player) {
 
         //yanderedev kode men det gør ikke noget
-        if(this.name.equals("SlowBullets")){
+        if(this.name.equalsIgnoreCase("SlowBullets")){
 
             player.endTimer = 40;
             player.powerUpTimer=200;
-        } else if(this.name.equals("Speed")){
+        } else if(this.name.equalsIgnoreCase("Speed")){
             player.speed += 2;
             player.powerUpTimer = 2000;
-        } else if(this.name.equals("HealthPickup")){
+        } else if(this.name.equalsIgnoreCase("HealthPickup")){
             player.life++;
             updateTimer(player);
 
-        } else if(this.name.equals("")){
+        } else if(this.name.equalsIgnoreCase("Ankh")){
             player.ankhed = true;
-        } else if(this.name.equals("Jesos")){
+        } else if(this.name.equalsIgnoreCase("Jesos")){
             player.BulletList.clear();
             player.position = new PVector(p.random(0,p.width),p.random(0,p.height));
             updateTimer(player);
 
         }
-        else if(this.name.equals("burstMode")){
+        else if(this.name.equalsIgnoreCase("burstMode")){
             player.slutBurst = 5;
             player.powerUpTimer = 200;
         }
-        else if(this.name.equals("fastBullets")){
+        else if(this.name.equalsIgnoreCase("fastBullets")){
             player.endTimer=10;
             player.powerUpTimer  =200;
 
