@@ -47,7 +47,7 @@ void tutorialText() {
         player.dead = true;
         spawnerManger.wave = -1;
         spawnerManger.tutorial = false;
-        
+
     }
 
 }
