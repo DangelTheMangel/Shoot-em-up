@@ -9,7 +9,7 @@ public class spawnerManger {
     PApplet p;
     boolean start = true;
     float rew = 50;
-    float enemyWidth = 50;
+    float enemyWidth = 26;
     float startTime = 0,roundHealthStart = 0, lastEnemyCount = 0, roundEnemyCount = 51;
     int wave = -1;
     boolean tutorial;
@@ -56,7 +56,7 @@ public class spawnerManger {
                 if (!start) {
 
                     //Du skal tilføje til så fjenderne for tidliger rundte også er med
-                    float maksEnemyCount = p.random(50, roundEnemyCount);
+                    float maksEnemyCount = p.random(25, roundEnemyCount);
                     float tid = p.frameCount - startTime;
                     float health = roundHealthStart - player.life;
                     System.out.println(tid);
@@ -180,6 +180,5 @@ if(tutorial ==true) {
             }
         }
         rew = s * enemyWidth;
-
     }
 }
