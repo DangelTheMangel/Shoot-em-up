@@ -9,8 +9,8 @@ public class spawnerManger {
     PApplet p;
     boolean start = true;
     float rew = 50;
-    float enemyWidth = 26;
-    float startTime = 0,roundHealthStart = 0, lastEnemyCount = 0, roundEnemyCount = 51;
+    float enemyWidth = 50;
+    float startTime = 0,roundHealthStart = 0, lastEnemyCount = 0, roundEnemyCount = 26;
     int wave = -1;
     boolean tutorial;
     boolean check = false;
